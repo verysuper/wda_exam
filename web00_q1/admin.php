@@ -59,7 +59,7 @@ if(empty($_GET["redo"])){
                     <!--主選單放此end-->
 							                    </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 :</span>
+                    	<span class="t">進站總人數 :<?php include_once("total.php");?></span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -90,7 +90,7 @@ if(empty($_GET["redo"])){
                              </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"></span>
+                	<span class="t" style="line-height:123px;"><?php include_once("footer.php");?></span>
                 </div>
     </div>
 
