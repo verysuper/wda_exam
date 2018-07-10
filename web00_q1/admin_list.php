@@ -7,4 +7,6 @@
   $ad_list["total"]="admin_1_7.php";
   $ad_list["bottom"]="admin_1_8.php";
   
+  $ad_list["admin"]="admin_1_11.php";
+  
 ?>
