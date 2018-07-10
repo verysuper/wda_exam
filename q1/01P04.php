@@ -32,7 +32,6 @@
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
 <?php include_once("mq.php");?><!--動態文字廣告-->
-                    	                    </marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
                         <div style="text-align:center;">
