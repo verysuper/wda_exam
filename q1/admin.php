@@ -23,7 +23,7 @@ if(empty($_GET["redo"])){
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-    	<a title="" href="?"><div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div><!--標題--></a>
+<?php include_once("title.php");?><!--網頁上方圖片檔案-->
         	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
@@ -66,8 +66,7 @@ if(empty($_GET["redo"])){
                 	                     <!--正中央-->
                                                     <table width="100%">
                                 	<tbody><tr>
-                                    	<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td>
-                                      <td><button onclick="lo('out.php')" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
+                                    	<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td><td><button onclick="lo('out.php')" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
                                     </tr>
                                 </tbody></table>
 <?php include_once($ad_list[$_GET["redo"]]);?>
