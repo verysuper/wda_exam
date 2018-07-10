@@ -1,3 +1,22 @@
+<?php
+	include_once('0_config.php');
+	if(!empty($_SESSION['acc'])){
+		header('location:admin.php');
+		exit();
+	}
+	if(!empty($_POST['acc'])&&!empty($_POST['ps'])){
+		$acc=$_POST['acc'];
+		$ps=$_POST['ps'];
+		$result = $conn->query("select * from admin where acc='{$acc}' and ps='{$ps}';");
+		if($result->rowCount() == 0){
+			echo "<script>alert('帳號或密碼輸入錯誤');</script>";
+		}else{
+			$_SESSION["acc"]=$acc;
+			header('location:admin.php');
+			exit();
+		}
+	}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0048)?do=admin -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -34,7 +53,7 @@
                     	                    </marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
-                                            		<form method="post" action="?do=check" target="back">
+                                            		<form method="post">
                         	    	<p class="t botli">管理員登入區</p>
                         			<p class="cent">帳號 ： <input name="acc" autofocus="" type="text"></p>
                         	        <p class="cent">密碼 ： <input name="ps" type="password"></p>
@@ -59,7 +78,7 @@
                         </script>
                                  <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 	<!--右邊-->   
-                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=admin&#39;)">管理登入</button>
+                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;login.php&#39;)">管理登入</button>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
 						                        <script>
