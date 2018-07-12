@@ -1,7 +1,7 @@
 <?php
 $link =mysqli_connect("localhost","root","","db00_q1");
 mysqli_query($link , 'SET NAMES UTF8');
-$sql = "select * from a_1_6_pic";
+$sql = "select * from a_1_6_pic where a_1_5_m_p_look = 1";
 $oo = mysqli_query($link,$sql);
 $x0x = mysqli_num_rows($oo);
 
@@ -14,7 +14,7 @@ $open_page = ($now_page-1) * $page_add ;//計算起始資料位置
 $pp = $now_page -1;//計算上一頁的頁碼
 $np = $now_page +1;//計算下一頁的頁碼
 
-$sql = "select * from a_1_6_pic limit $open_page,$page_add";// limit a,b 從第a筆之後(不含它)開始抓數量為b的幾筆資料
+$sql = "select * from a_1_6_pic where a_1_5_m_p_look = 1 limit $open_page,$page_add";// limit a,b 從第a筆之後(不含它)開始抓數量為b的幾筆資料
 $oo = mysqli_query($link,$sql);
 $xx = mysqli_fetch_assoc($oo);
 ?>
