@@ -1,6 +1,5 @@
 ﻿<?php
 	include_once('0_config.php');
-	include_once('0_list.php');
 	if(empty($_SESSION['acc'])){
 		header('location:login.php');
 		exit();
@@ -28,7 +27,15 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-    	<a title="" href="?"><div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div><!--標題--></a>
+<?php
+	//網頁上方圖片檔案
+	$sql="select * from title where display = 1;";
+	$result=$conn->query($sql);
+	$row=$result->fetch();
+?>
+<a href="/wda_exam/web01_2">
+<img src="upload/<?=$row['pic']?>" width="1024" height="100" alt="<?=$row['alt']?>" title="<?=$row['alt']?>">
+</a>
         	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
@@ -57,7 +64,9 @@
 																			<td><button onclick="lo('0_logout.php')" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
                                     </tr>
                                 </tbody></table>
-<?php include_once($list[$_GET['redo']])?>
+<?php
+	include_once($list[$_GET['redo']]);
+?>
                                                 </div>
                 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>

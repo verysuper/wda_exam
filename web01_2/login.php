@@ -36,7 +36,15 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-    	<a title="" href="?"><div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div><!--標題--></a>
+<?php
+	//網頁上方圖片檔案
+	$sql="select * from title where display = 1;";
+	$result=$conn->query($sql);
+	$row=$result->fetch();
+?>
+<a href="/wda_exam/web01_2">
+<img src="upload/<?=$row['pic']?>" width="1024" height="100" alt="<?=$row['alt']?>" title="<?=$row['alt']?>">
+</a>
         	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">

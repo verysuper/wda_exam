@@ -4,4 +4,6 @@
   $ro = mysqli_query($link,$sql);
   $rr = mysqli_fetch_assoc($ro);
 ?>
-<a href="/"><img src="nfgkjewqrhto3ty23984rh9fh32f/<?=$rr['a_1_3_t_p_title']?>" width="1024" height="100" alt="<?=$rr['a_1_3_t_p_alt']?>" title="<?=$rr['a_1_3_t_p_alt']?>"></a>
+<a href="/">
+<img src="nfgkjewqrhto3ty23984rh9fh32f/<?=$rr['a_1_3_t_p_title']?>" width="1024" height="100" alt="<?=$rr['a_1_3_t_p_alt']?>" title="<?=$rr['a_1_3_t_p_alt']?>">
+</a>

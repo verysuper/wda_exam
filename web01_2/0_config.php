@@ -8,4 +8,6 @@ try{
   echo $ex->getMessage();
 }
 session_start();
+//menu page mapping 
+$list['title']='1_title.php';
 ?>
