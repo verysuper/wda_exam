@@ -10,4 +10,5 @@ try{
 session_start();
 //menu page mapping 
 $list['title']='1_title.php';
+$list['ad']='2_ad.php';
 ?>
