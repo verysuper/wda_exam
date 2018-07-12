@@ -45,6 +45,7 @@
         }
       }
     }
+    header('location:admin.php');
   }
 //read
   $sql="select * from title";
