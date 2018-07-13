@@ -57,8 +57,19 @@
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
-                	                     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-                    	                    </marquee>
+<!-- 動態文字廣告 -->
+<?php
+$sql = "select * from ad where display = 1";
+$result = $conn->query($sql);
+//$row = $result->fetch();
+?>
+<marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
+<?php
+while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    echo $row['content'] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+}
+?>
+</marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
                                             		<form method="post">

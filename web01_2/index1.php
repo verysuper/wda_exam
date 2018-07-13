@@ -1,5 +1,5 @@
 <?php
-	include_once('0_config.php');
+include_once '0_config.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
@@ -21,10 +21,10 @@
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
 <?php
-	//網頁上方圖片檔案
-	$sql="select * from title where display = 1;";
-	$result=$conn->query($sql);
-	$row=$result->fetch();
+//網頁上方圖片檔案
+$sql = "select * from title where display = 1;";
+$result = $conn->query($sql);
+$row = $result->fetch();
 ?>
 <a href="/wda_exam/web01_2">
 <img src="upload/<?=$row['pic']?>" width="1024" height="100" alt="<?=$row['alt']?>" title="<?=$row['alt']?>">
@@ -36,39 +36,61 @@
                     	                            <span class="t botli">主選單區</span>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 : 
+                    	<span class="t">進站總人數 :
                         	1                        </span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
 <!-- 動態文字廣告 -->
-
-																			 <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-                    	                    </marquee>
+<?php
+$sql = "select * from ad where display = 1";
+$result = $conn->query($sql);
+//$row = $result->fetch();
+?>
+<marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
+<?php
+while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    echo $row['content'] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+}
+?>
+</marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
-                                        <script>
-                    	var lin=new Array();
-						var now=0;
-						if(lin.length>1)
-						{
-							setInterval("ww()",3000);
-							now=1;
-						}
-						function ww()
-						{
-							$("#mwww").html("<embed loop=true src='"+lin[now]+"' style='width:99%; height:100%;'></embed>")
-							//$("#mwww").attr("src",lin[now])
-							now++;
-							if(now>=lin.length)
-							now=0;
-						}
-                    </script>
+
+<script>
+	var lin=new Array();
+	var now=0;
+<?php 
+	$sql="select * from mvim where display='1';";
+	$result=$conn->query($sql);
+	$curr=0;
+	while($row=$result->fetch(PDO::FETCH_ASSOC)){
+?>
+		lin[<?=$curr?>]="upload/<?=$row['image']?>";
+<?php
+		$curr++;
+	}
+?>
+	if(lin.length>0)
+	{
+		setInterval("ww()",3000);		
+	}
+	function ww()
+	{
+		$("#mwww").html("<embed loop=true src='"+lin[now]+"' style='width:99%; height:100%;'></embed>")
+		//$("#mwww").attr("src",lin[now])
+		now++;
+		if(now>=lin.length){
+			now=0;
+		}			
+	}
+</script>
                 	<div style="width:100%; padding:2px; height:290px;">
                     	<div id="mwww" loop="true" style="width:100%; height:100%;">
                         	                                <div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
                                                         </div>
                     </div>
+
                 	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
                     		<span class="t botli">最新消息區
                             								</span>
@@ -109,8 +131,19 @@
 						)
                         </script>
                                  <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
-                	<!--右邊-->   
-                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('login.php')">管理登入</button>
+                	<!--右邊-->
+<!-- 管理登入按鈕 -->
+<?php
+if (!empty($_SESSION['acc'])) {
+    ?>
+<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('0_logout.php')">管理登出</button>
+
+<?php
+} else {
+    ?><button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('login.php')">管理登入</button>
+<?php
+}
+?>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
 						                        <script>
@@ -139,5 +172,5 @@
                 	<span class="t" style="line-height:123px;"></span>
                 </div>
     </div>
-
+<script>ww();</script>
 </body></html>

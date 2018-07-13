@@ -41,8 +41,19 @@
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
-                	                     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-                    	                    </marquee>
+<!-- 動態文字廣告 -->
+<?php
+$sql = "select * from ad where display = 1";
+$result = $conn->query($sql);
+//$row = $result->fetch();
+?>
+<marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
+<?php
+while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    echo $row['content'] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+}
+?>
+</marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
                         <div style="text-align:center;">
@@ -67,8 +78,19 @@
 						)
                         </script>
                                  <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
-                	<!--右邊-->   
-                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=admin&#39;)">回後台管理</button>
+                	<!--右邊-->
+<!-- 管理登入按鈕 -->
+<?php
+if (!empty($_SESSION['acc'])) {
+?>
+<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('0_logout.php')">管理登出</button>
+
+<?php
+}else{
+?><button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('login.php')">管理登入</button>
+<?php
+}
+?>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
 						                        <script>
