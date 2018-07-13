@@ -12,4 +12,6 @@
   $list['title']='1_title.php';
   $list['ad']='2_ad.php';
   $list['mvim'] = '3_mvim.php';
+  $list['image'] = '4_image.php';
+
 ?>
