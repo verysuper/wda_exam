@@ -65,10 +65,6 @@ $all_page = ceil($denom / $numer); //total page
 $set_limit = ($current_page - 1) * $numer;
 $sql="select * from image limit $set_limit,$numer";
 $result = $conn->query($sql);
-// while($part=$stmt->fetch(PDO::FETCH_ASSOC)){
-//    echo "<pre>".print_r($row,true)."</pre>";
-// }
-
 ?>
 <style type="text/css">
 a {
@@ -117,8 +113,8 @@ a {
             <td width="200px"></td>
             <td class="cent" style="font-size:30px; text-decoration: none;">
 <?php 
-    $last = $start_page - 1;
-    $next = $start_page + 1;
+    $last = $current_page - 1;
+    $next = $current_page + 1;
     echo "<a href='?redo=image&current=" . ($last > 0 ? $last : 1) . "'> ＜ </a> ";
     for($x=1;$x<=$all_page;$x++){
 ?> 

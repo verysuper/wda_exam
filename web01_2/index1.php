@@ -33,8 +33,8 @@ $row = $result->fetch();
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
-                    	                            <span class="t botli">主選單區</span>
-                                                </div>
+                    	<span class="t botli">主選單區</span>
+                    </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     	<span class="t">進站總人數 :
                         	1                        </span>
@@ -145,8 +145,52 @@ if (!empty($_SESSION['acc'])) {
 }
 ?>
                 	<div style="width:89%; height:480px;" class="dbor">
-                    	<span class="t botli">校園映象區</span>
-						                        <script>
+						<span class="t botli">校園映象區</span>
+<!-- 校園映象區 -->
+<?php 
+	//read
+	$sql = "select * from image";
+	$result = $conn->query($sql);
+	//part page
+	$denom = $result->rowCount(); //total rows
+	$numer = 3;
+	$start_page = 1; // start page
+	$current_page = 1;
+	if(!empty($_GET['current'])){
+		$current_page = $_GET['current'];
+	}
+	$all_page = ceil($denom / $numer); //total page
+
+	$set_limit = ($current_page - 1) * $numer;
+	$sql="select * from image limit $set_limit,$numer";
+	$result = $conn->query($sql);
+	$last = $current_page - 1;
+	$next = $current_page + 1;
+?>
+<table width='100%'>
+	<tr>
+		<td align="center">
+			<a href='?current=<?php echo $last > 0 ? $last : 1;?>'>
+				<img src="images/01E01.jpg" alt="上一頁" title="上一頁">
+			</a>
+		</td>
+	</tr>
+<?php while($row=$result->fetch(PDO::FETCH_ASSOC)){?>
+	<tr>
+		<td align="center">
+			<embed src="upload/<?=$row['image']?>" width="150" height="103"  style="border:5px #FC3 solid;"></embed>
+		</td>
+	</tr>
+<?php }?>
+	<tr>
+		<td align="center">
+			<a href='?current=<?php echo $next <= $all_page ? $next : $all_page;?>'>
+				<img src="images/01E02.jpg" alt="下一頁" title="下一頁">
+			</a>
+		</td>
+	</tr>
+</table>
+						<script>
                         	var nowpage=0,num=0;
 							function pp(x)
 							{
