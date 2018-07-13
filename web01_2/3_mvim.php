@@ -68,7 +68,6 @@ $result = $conn->query($sql);
     extract($row);?>
         <tr class="yel">
           <td width="50%">
-            <!-- <img src="upload/<?=$pic?>" width="300" height="30" title="<?=$pic?>">  -->
             <embed src="upload/<?=$image?>" width="120" height="90"></embed>
             <input type="hidden" name="id[]" value="<?=$id?>">
           </td>

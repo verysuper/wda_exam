@@ -56,16 +56,29 @@ $result = $conn->query($sql);
 $denom = $result->rowCount(); //total rows
 $numer = 3;
 $start_page = 1; // start page
-
-$current_page = $_GET['current'];
+$current_page = 1;
+if(!empty($_GET['current'])){
+    $current_page = $_GET['current'];
+}
 $all_page = ceil($denom / $numer); //total page
-$last = $start_page - 1;
-$next = $start_page + 1;
 
-$set_limit = ($start_page - 1) * $numer;
-
+$set_limit = ($current_page - 1) * $numer;
+$sql="select * from image limit $set_limit,$numer";
+$result = $conn->query($sql);
+// while($part=$stmt->fetch(PDO::FETCH_ASSOC)){
+//    echo "<pre>".print_r($row,true)."</pre>";
+// }
 
 ?>
+<style type="text/css">
+a {
+	text-decoration: none;
+}
+.current_page{
+  font-size: 38px;
+}
+</style>
+
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
   <p class="t cent botli">校園映象資料管理</p>
   <form method="post">
@@ -81,7 +94,6 @@ $set_limit = ($start_page - 1) * $numer;
     extract($row);?>
         <tr class="yel">
           <td width="50%">
-            <!-- <img src="upload/<?=$pic?>" width="300" height="30" title="<?=$pic?>">  -->
             <embed src="upload/<?=$image?>" width="120" height="90"></embed>
             <input type="hidden" name="id[]" value="<?=$id?>">
           </td>
@@ -98,8 +110,25 @@ $set_limit = ($start_page - 1) * $numer;
         <?php }?>
       </tbody>
   </table>
-  <table style="margin-top:40px; width:70%;">
+  <table style="width:70%;">
     <tbody>
+<!-- 頁碼區 -->
+        <tr>
+            <td width="200px"></td>
+            <td class="cent" style="font-size:30px; text-decoration: none;">
+<?php 
+    $last = $start_page - 1;
+    $next = $start_page + 1;
+    echo "<a href='?redo=image&current=" . ($last > 0 ? $last : 1) . "'> ＜ </a> ";
+    for($x=1;$x<=$all_page;$x++){
+?> 
+        <a href='?redo=image&current=<?=$x?>' <?php if($current_page == $x){echo "class=current_page";}?>><?=$x?></a>
+<?php 
+    }
+    echo " <a href='?redo=image&current=" . ($next <= $all_page ? $next : $all_page) . "'> ＞ </a>";
+?>
+            </td>
+        </tr>
       <tr>
         <td width="200px">
           <input type="button" onclick="op('#cover','#cvr','4_imageAdd.php')" value="新增校園映象圖片">
