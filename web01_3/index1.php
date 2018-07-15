@@ -1,24 +1,5 @@
-<?php
-	include_once('0_config.php');
-	if(!empty($_SESSION['acc'])){
-		header('location:admin.php');
-		exit();
-	}
-	if(!empty($_POST['acc'])&&!empty($_POST['ps'])){
-		$acc=$_POST['acc'];
-		$ps=$_POST['ps'];
-		$result = $conn->query("select * from admin where acc='{$acc}' and ps='{$ps}';");
-		if($result->rowCount() == 0){
-			echo "<script>alert('帳號或密碼輸入錯誤');</script>";
-		}else{
-			$_SESSION["acc"]=$acc;
-			header('location:admin.php');
-			exit();
-		}
-	}
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0048)?do=admin -->
+<!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>卓越科技大學校園資訊系統</title>
@@ -36,15 +17,7 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-<?php
-	//網頁上方圖片檔案
-	$sql="select * from title where display = 1;";
-	$result=$conn->query($sql);
-	$row=$result->fetch();
-?>
-<a href="/wda_exam/web01_2">
-<img src="upload/<?=$row['pic']?>" width="1024" height="100" alt="<?=$row['alt']?>" title="<?=$row['alt']?>">
-</a>
+    	<a title="" href="./home_files/home.htm"><div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div><!--標題--></a>
         	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
@@ -52,32 +25,60 @@
                     	                            <span class="t botli">主選單區</span>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 : <?=$total['count']?></span>
+                    	<span class="t">進站總人數 : 
+                        	1                        </span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
-<!-- 動態文字廣告 -->
-<?php
-$sql = "select * from ad where display = 1";
-$result = $conn->query($sql);
-//$row = $result->fetch();
-?>
-<marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-<?php
-while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    echo $row['content'] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-}
-?>
-</marquee>
+                	                     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
+                    	                    </marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
-                                            		<form method="post">
-                        	    	<p class="t botli">管理員登入區</p>
-                        			<p class="cent">帳號 ： <input name="acc" autofocus="" type="text"></p>
-                        	        <p class="cent">密碼 ： <input name="ps" type="password"></p>
-                        	        <p class="cent"><input value="送出" type="submit"><input type="reset" value="清除"></p>
-                        	    </form>
-                        	                </div>
+                                        <script>
+                    	var lin=new Array();
+						var now=0;
+						if(lin.length>1)
+						{
+							setInterval("ww()",3000);
+							now=1;
+						}
+						function ww()
+						{
+							$("#mwww").html("<embed loop=true src='"+lin[now]+"' style='width:99%; height:100%;'></embed>")
+							//$("#mwww").attr("src",lin[now])
+							now++;
+							if(now>=lin.length)
+							now=0;
+						}
+                    </script>
+                	<div style="width:100%; padding:2px; height:290px;">
+                    	<div id="mwww" loop="true" style="width:100%; height:100%;">
+                        	                                <div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
+                                                        </div>
+                    </div>
+                	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
+                    		<span class="t botli">最新消息區
+                            								</span>
+                            <ul class="ssaa" style="list-style-type:decimal;">
+                            	                            </ul>
+        			<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
+                    	<script>
+						$(".ssaa li").hover(
+							function ()
+							{
+								$("#altt").html("<pre>"+$(this).children(".all").html()+"</pre>")
+								$("#altt").show()
+							}
+						)
+						$(".ssaa li").mouseout(
+							function()
+							{
+								$("#altt").hide()
+							}
+						)
+                        </script>
+                    </div>
+                	                </div>
                 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
 						$(".sswww").hover(
@@ -96,7 +97,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                         </script>
                                  <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 	<!--右邊-->   
-                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;login.php&#39;)">管理登入</button>
+                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=admin&#39;)">管理登入</button>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
 						                        <script>
@@ -122,7 +123,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                             </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"><?=$bottom['content']?></span>
+                	<span class="t" style="line-height:123px;"></span>
                 </div>
     </div>
 

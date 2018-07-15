@@ -36,8 +36,7 @@
                     	                            <span class="t botli">主選單區</span>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 : 
-                        	1                        </span>
+                    	<span class="t">進站總人數 : <?=$total['count']?></span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -56,10 +55,59 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 </marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
+<!-- 最新消息區start -->
+<?php //include_once('7_newsContent.php');?>
+<?php
+	$sql="select * from news where display = 1";
+	$result=$conn->query($sql);
+  //part page
+	$denom = $result->rowCount(); //total rows
+	$numer = 5;
+	$start_page = 1; // start page
+	$news_page = 1;
+	if(!empty($_GET['news_p'])){
+		$news_page = $_GET['news_p'];
+	}
+	$all_page = ceil($denom / $numer); //total page
+
+	$set_limit = ($news_page - 1) * $numer;
+	$sql="select * from news limit $set_limit,$numer";
+	$result = $conn->query($sql);
+	$last = $news_page - 1;
+	$next = $news_page + 1;
+?>
+<style type="text/css">
+a {
+	text-decoration: none;
+}
+.current_page{
+  font-size: 38px;
+}
+</style>
+                    		<span class="t botli">更多最新消息顯示區</span>
+                            <ul class="ssaa" style="list-style-type:decimal;">
+<?php
+	// for($x=1;$x<=$denom;$x++){
+	// 	$row=$result->fetch(PDO::FETCH_ASSOC);
+	// 	echo "<li>".mb_substr($row['content'],0,25)."...<div class = 'all' style ='display:none;'>".$row['content']."</div></li>";
+  // }
+  while($row=$result->fetch(PDO::FETCH_ASSOC)){
+    echo "<li>".mb_substr($row['content'],0,25)."...<div class = 'all' style ='display:none;'>".$row['content']."</div></li>";
+  }
+?>														
+														</ul>
                         <div style="text-align:center;">
-    <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&lt;&nbsp;</a>
-        <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&nbsp;&gt;</a>
+    <a class="bl" style="font-size:30px;" href="?do=meg&news_p=<?=($last > 0 ? $last : 1)?>">&lt;&nbsp;</a>
+<?php 
+    for($x=1;$x<=$all_page;$x++){
+?> 
+        <a href='?do=meg&news_p=<?=$x?>' <?php if($news_page == $x){echo "class=current_page";}?>><?=$x?></a>
+<?php 
+    }
+?>
+        <a class="bl" style="font-size:30px;" href="?do=meg&news_p=<?=($next <= $all_page ? $next : $all_page)?>">&nbsp;&gt;</a>
     </div>
+<!-- 最新消息區end -->
 	                </div>
                 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
@@ -93,6 +141,50 @@ if (!empty($_SESSION['acc'])) {
 ?>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
+<!-- 校園映象區 -->
+<?php 
+	//read
+	$sql = "select * from image";
+	$result = $conn->query($sql);
+	//part page
+	$denom = $result->rowCount(); //total rows
+	$numer = 3;
+	$start_page = 1; // start page
+	$current_page = 1;
+	if(!empty($_GET['current'])){
+		$current_page = $_GET['current'];
+	}
+	$all_page = ceil($denom / $numer); //total page
+
+	$set_limit = ($current_page - 1) * $numer;
+	$sql="select * from image limit $set_limit,$numer";
+	$result = $conn->query($sql);
+	$last = $current_page - 1;
+	$next = $current_page + 1;
+?>
+<table width='100%'>
+	<tr>
+		<td align="center">
+			<a href='?current=<?php echo $last > 0 ? $last : 1;?>'>
+				<img src="images/01E01.jpg" alt="上一頁" title="上一頁">
+			</a>
+		</td>
+	</tr>
+<?php while($row=$result->fetch(PDO::FETCH_ASSOC)){?>
+	<tr>
+		<td align="center">
+			<embed src="upload/<?=$row['image']?>" width="150" height="103"  style="border:5px #FC3 solid;"></embed>
+		</td>
+	</tr>
+<?php }?>
+	<tr>
+		<td align="center">
+			<a href='?current=<?php echo $next <= $all_page ? $next : $all_page;?>'>
+				<img src="images/01E02.jpg" alt="下一頁" title="下一頁">
+			</a>
+		</td>
+	</tr>
+</table>
 						                        <script>
                         	var nowpage=0,num=0;
 							function pp(x)
@@ -116,7 +208,7 @@ if (!empty($_SESSION['acc'])) {
                             </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"></span>
+                	<span class="t" style="line-height:123px;"><?=$bottom['content']?></span>
                 </div>
     </div>
 

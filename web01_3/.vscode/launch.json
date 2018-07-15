@@ -8,7 +8,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "針對 localhost 啟動 Chrome",
-      "url": "http://localhost/wda_exam/web00_q1",
+      "url": "http://localhost/wda_exam/web01_3",
       "webRoot": "${workspaceFolder}"
     }
   ]

@@ -36,8 +36,7 @@ $row = $result->fetch();
                     	<span class="t botli">主選單區</span>
                     </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 :
-                        	1                        </span>
+                    	<span class="t">進站總人數 :<?=$total['count']?></span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -90,12 +89,25 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                         	                                <div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
                                                         </div>
                     </div>
-
+<!-- 最新消息區start -->
+<?php
+	$sql="select * from news where display = 1";
+	$result=$conn->query($sql);
+	$num=$result->rowCount();
+?>
                 	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
-                    		<span class="t botli">最新消息區
-                            								</span>
+                    		<span class="t botli">最新消息區　　　　　　　　　　　　　　　　　　　　　　　
+<?php echo $num>5?"<a href='news.php'>More...</a>":""; ?>
+												</span>
                             <ul class="ssaa" style="list-style-type:decimal;">
-                            	                            </ul>
+<?php
+	for($x=1;$x<=5;$x++){
+		$row=$result->fetch(PDO::FETCH_ASSOC);
+		echo "<li>".mb_substr($row['content'],0,25)."...<div class = 'all' style ='display:none;'>".$row['content']."</div></li>";
+	}
+?>														
+														</ul>
+<!-- 最新消息區end -->
         			<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
 						$(".ssaa li").hover(
@@ -213,7 +225,7 @@ if (!empty($_SESSION['acc'])) {
                             </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"></span>
+                	<span class="t" style="line-height:123px;"><?=$bottom['content']?></span>
                 </div>
     </div>
 <script>ww();</script>
