@@ -4,11 +4,12 @@
   }catch(PDOException $ex){
     echo $ex->getMessage();
   }
+
   //index info
   //1.titles
   $result=$conn->query("select * from titles where display = 1;");
   while($row=$result->fetch(PDO::FETCH_ASSOC)){
-    $titles[]=$row;
+    $titles=$row;
   }
   //2.menu
 
@@ -25,20 +26,20 @@
   
   //4.ads
   $result=$conn->query("select * from ads where display = 1;");
-  $abs="";
+  $ads="";
   while($row=$result->fetch(PDO::FETCH_ASSOC)){
-    $ads.=$row['ad'];
+    $ads .= $row['ad'].", "; // usage js
   }
-
   //5.mvim
+  $mvims="";
   $result=$conn->query("select * from mvims where display = 1;");
   while($row=$result->fetch(PDO::FETCH_ASSOC)){
-    $mvims[]=$row;
+    // $mvims[]=$row;
+    $mvims .= "'upload/".$row["mvim"]."',"; // usage js
   }
-  //echo "<pre>".print_r($mvims,true)."</pre>"; //test
-  foreach( $mvims as $val){
-    echo "<pre>".print_r($val,true)."</pre>"; //test
-  }
+  // foreach( $mvims as $val){
+  //   echo "<pre>".print_r($val,true)."</pre>"; //test*************
+  // }
 
   //6.newss
   $result=$conn->query("select * from newss where display = 1;");
@@ -54,10 +55,19 @@
 		$login_url = "admin.php";
   }
   //8.images
+  $num = 0;
+	$gallery = "<div onclick='pp(1)' align='center'><img src='images/01E01.jpg'></div>";
   $result=$conn->query("select * from images where display = 1;");
+  $gallery_num=$result->rowCount();
   while($row=$result->fetch(PDO::FETCH_ASSOC)){
-    $images[]=$row;
+    //$images[]=$row;
+		$gallery .= "
+		<img src='upload/".$row["image"]."'  width='150' height='103'  style='border:5px #FC3 solid;' class='im' id='ssaa".$num."' />
+		";
+		
+		$num++;
   }
+  $gallery .= "<div onclick='pp(2)' align='center'><img src='images/01E02.jpg'></div>";
 
   //9.bottoms
   $result=$conn->query("select * from bottoms;");
