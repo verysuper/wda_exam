@@ -25,8 +25,9 @@
   
   //4.ads
   $result=$conn->query("select * from ads where display = 1;");
+  $abs="";
   while($row=$result->fetch(PDO::FETCH_ASSOC)){
-    $ads[]=$row;
+    $ads.=$row['ad'];
   }
 
   //5.mvim
