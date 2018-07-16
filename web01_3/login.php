@@ -24,10 +24,10 @@
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
                     	                            <span class="t botli">主選單區</span>
+													<?=$menu?>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 : 
-                        	1                        </span>
+                    	<span class="t">進站總人數 : <?=$totals['total']?></span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -63,14 +63,15 @@
                 	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('<?=$login_url?>')"><?=$login_text?></button>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
+											<?=$gallery?>
 						                        <script>
-                        	var nowpage=0,num=0;
+                        	var nowpage=0,num=<?=$gallery_num?>;
 							function pp(x)
 							{
 								var s,t;
 								if(x==1&&nowpage-1>=0)
 								{nowpage--;}
-								if(x==2&&(nowpage+1)*3<=num*1+3)
+								if(x==2&&(nowpage+3)<num)
 								{nowpage++;}
 								$(".im").hide()
 								for(s=0;s<=2;s++)
@@ -86,7 +87,7 @@
                             </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"></span>
+                	<span class="t" style="line-height:123px;"><?=$bottoms['bottom']?></span>
                 </div>
     </div>
 

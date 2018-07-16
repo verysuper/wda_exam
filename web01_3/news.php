@@ -1,4 +1,7 @@
-<?php include_once('_config.php');?>
+<?php 
+	include_once('_config.php');
+	
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0055)?do=meg -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -24,10 +27,10 @@
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
                     	                            <span class="t botli">主選單區</span>
+													<?=$menu?>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 : 
-                        	1                        </span>
+                    	<span class="t">進站總人數 : <?=$totals['total']?></span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -36,23 +39,24 @@
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
                         <div style="text-align:center;">
+						<p class="t botli">更多最新消息顯示區</p>
     <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&lt;&nbsp;</a>
         <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&nbsp;&gt;</a>
     </div>
 	                </div>
-                <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
+        			<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
-						$(".sswww").hover(
+						$(".ssaa li").hover(
 							function ()
 							{
-								$("#alt").html(""+$(this).children(".all").html()+"").css({"top":$(this).offset().top-50})
-								$("#alt").show()
+								$("#altt").html("<pre>"+$(this).children(".all").html()+"</pre>")
+								$("#altt").show()
 							}
 						)
-						$(".sswww").mouseout(
+						$(".ssaa li").mouseout(
 							function()
 							{
-								$("#alt").hide()
+								$("#altt").hide()
 							}
 						)
                         </script>
@@ -61,14 +65,15 @@
                 	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('<?=$login_url?>')"><?=$login_text?></button>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
+											<?=$gallery?>
 						                        <script>
-                        	var nowpage=0,num=0;
+                        	var nowpage=0,num=<?=$gallery_num?>;
 							function pp(x)
 							{
 								var s,t;
 								if(x==1&&nowpage-1>=0)
 								{nowpage--;}
-								if(x==2&&(nowpage+1)*3<=num*1+3)
+								if(x==2&&(nowpage+3)<num)
 								{nowpage++;}
 								$(".im").hide()
 								for(s=0;s<=2;s++)
@@ -84,7 +89,7 @@
                             </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"></span>
+                	<span class="t" style="line-height:123px;"><?=$bottoms['bottom']?></span>
                 </div>
     </div>
 

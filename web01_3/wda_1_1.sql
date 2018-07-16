@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-07-16 17:38:06
+-- 產生時間： 2018-07-16 19:02:10
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 5.6.36
 
@@ -76,6 +76,13 @@ CREATE TABLE `bottoms` (
   `bottom` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- 資料表的匯出資料 `bottoms`
+--
+
+INSERT INTO `bottoms` (`bottom`) VALUES
+('ㄊㄇㄉ');
+
 -- --------------------------------------------------------
 
 --
@@ -115,16 +122,16 @@ CREATE TABLE `menus` (
   `menu` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `href` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `display` int(1) NOT NULL,
-  `lv` int(1) NOT NULL
+  `parent` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 資料表的匯出資料 `menus`
 --
 
-INSERT INTO `menus` (`id`, `menu`, `href`, `display`, `lv`) VALUES
+INSERT INTO `menus` (`id`, `menu`, `href`, `display`, `parent`) VALUES
 (1, '管理登入', 'login.php', 1, 0),
-(2, '網站首頁', 'index.php', 1, 0);
+(2, '網站首頁', 'index1.php', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -158,7 +165,7 @@ INSERT INTO `mvims` (`id`, `mvim`, `display`) VALUES
 
 CREATE TABLE `newss` (
   `id` int(11) UNSIGNED NOT NULL,
-  `ad` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `news` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `display` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -166,7 +173,7 @@ CREATE TABLE `newss` (
 -- 資料表的匯出資料 `newss`
 --
 
-INSERT INTO `newss` (`id`, `ad`, `display`) VALUES
+INSERT INTO `newss` (`id`, `news`, `display`) VALUES
 (1, '教師研習「世界公民生命園丁國內研習會」\r\n1.主辦單位：世界展望會\r\n2.研習日期：101年11月14日（三）～15日（四）\r\n3.詳情請參考：\r\nhttp://gc.worldvision.org.tw/seed.html。\r\n請線上報名。', 1),
 (2, '公告綜合高中一年級英數補救教學時間\r\n上課日期:10/27.11/3.11/10.11/24共計四次\r\n上課時間:早上8:00~11:50半天\r\n費用:全程免費\r\n參加同學:綜合科一年級第一次段考成績需加強者\r\n已將名單送交各班及導師\r\n參加同學請帶紙筆.課本.第一次段考考卷\r\n並將家長通知單給家長\r\n若有任何疑問\r\n請洽綜合高中學程主任', 1),
 (3, '102年全國大專校院運動會\r\n「主題標語及吉祥物命名」\r\n網路票選活動\r\n一、活動期間：自10月25日起至11月4日止。\r\n二、相關訊息請上宜蘭大學首頁連結「102全大運在宜大」\r\n活動網址：http://102niag.niu.edu.tw/', 1),
@@ -215,7 +222,7 @@ CREATE TABLE `totals` (
 --
 
 INSERT INTO `totals` (`total`) VALUES
-(14);
+(17);
 
 --
 -- 已匯出資料表的索引

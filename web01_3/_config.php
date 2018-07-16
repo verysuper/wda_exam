@@ -11,7 +11,27 @@
   while($row=$result->fetch(PDO::FETCH_ASSOC)){
     $titles=$row;
   }
+
   //2.menu
+	$menu = "";
+	// 先取主選單
+  $result = $conn->query("select * from menus where parent = 0");
+	while($row = $result->fetch(PDO::FETCH_ASSOC))
+	{
+		$menu .= "<div class='mainmu' align='center'>
+			<a href='".$row["href"]."' align='center'>".$row["menu"]."</a>";
+		
+		// 再取次選單
+    $result2 = $conn->query("select * from menus where parent = ".$row["id"]."");
+		while($row2 = $result2->fetch(PDO::FETCH_ASSOC))
+		{		
+			$menu .= "<div class='mainmu2 mw' align='center' style='display:none'>
+			<a href='".$row2["href"]."' align='center'>".$row2["menu"]."</a>
+			</div>";
+		}
+							
+		$menu .= "</div>";
+	}
 
   //3.totals
   session_start();
@@ -21,7 +41,7 @@
   }
   $result=$conn->query("select * from totals;");
   while($row=$result->fetch(PDO::FETCH_ASSOC)){
-    $totals[]=$row;
+    $totals=$row;
   }
   
   //4.ads
@@ -30,22 +50,8 @@
   while($row=$result->fetch(PDO::FETCH_ASSOC)){
     $ads .= $row['ad'].", "; // usage js
   }
-  //5.mvim
-  $mvims="";
-  $result=$conn->query("select * from mvims where display = 1;");
-  while($row=$result->fetch(PDO::FETCH_ASSOC)){
-    // $mvims[]=$row;
-    $mvims .= "'upload/".$row["mvim"]."',"; // usage js
-  }
-  // foreach( $mvims as $val){
-  //   echo "<pre>".print_r($val,true)."</pre>"; //test*************
-  // }
 
-  //6.newss
-  $result=$conn->query("select * from newss where display = 1;");
-  while($row=$result->fetch(PDO::FETCH_ASSOC)){
-    $newss[]=$row;
-  }
+
   //7.login button
   if(!isset($_SESSION['admin'])){
     $login_text = "管理登入";
@@ -54,6 +60,7 @@
     $login_text = "回後台管理";
 		$login_url = "admin.php";
   }
+
   //8.images
   $num = 0;
 	$gallery = "<div onclick='pp(1)' align='center'><img src='images/01E01.jpg'></div>";

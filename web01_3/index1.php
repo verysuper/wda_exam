@@ -1,4 +1,26 @@
-<?php include_once('_config.php');?>
+<?php 
+	include_once('_config.php');
+	//5.mvim************index
+  $mvims="";
+  $result=$conn->query("select * from mvims where display = 1;");
+  while($row=$result->fetch(PDO::FETCH_ASSOC)){
+    // $mvims[]=$row;
+    $mvims .= "'upload/".$row["mvim"]."',"; // usage js
+  }
+  // foreach( $mvims as $val){
+  //   echo "<pre>".print_r($val,true)."</pre>"; //test
+  // }
+
+  //6.newss************index
+  $newsToindex="";
+  $result=$conn->query("select * from newss where display = 1;");
+  $news_length=$result->rowCount();
+  // while($row=$result->fetch(PDO::FETCH_ASSOC)){  }
+  for($x=1;$x<=5;$x++){
+		$row=$result->fetch(PDO::FETCH_ASSOC);
+		$newsToindex .="<li>".mb_substr($row['news'],0,25)."...<div class = 'all' style ='display:none;'>".$row['news']."</div></li>";
+	}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -24,10 +46,10 @@
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
                     	                            <span class="t botli">主選單區</span>
+																									<?=$menu?>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 : 
-                        	1                        </span>
+                    	<span class="t">進站總人數 : <?=$totals['total']?></span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -36,7 +58,7 @@
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
                                         <script>
-                    	var lin=new Array();
+                    	var lin=new Array(<?=$mvims?>);
 						var now=0;
 						if(lin.length>1)
 						{
@@ -58,9 +80,11 @@
                                                         </div>
                     </div>
                 	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
-                    		<span class="t botli">最新消息區
-                            								</span>
+                    		<span class="t botli">最新消息區　　　　　　　　　　　　　　　　　　　　　　　
+<?php echo $news_length>5?"<a href='news.php'>More...</a>":""; ?>
+												</span>
                             <ul class="ssaa" style="list-style-type:decimal;">
+														<?=$newsToindex?>
                             	                            </ul>
         			<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
@@ -125,8 +149,8 @@
                             </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"></span>
+                	<span class="t" style="line-height:123px;"><?=$bottoms['bottom']?></span>
                 </div>
     </div>
-
+<script>ww();</script>
 </body></html>
