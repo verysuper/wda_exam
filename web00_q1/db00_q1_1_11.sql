@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-07-17 07:34:13
+-- 產生時間： 2018-07-17 02:26:43
 -- 伺服器版本: 10.1.31-MariaDB
 -- PHP 版本： 5.6.35
 
@@ -211,14 +211,6 @@ CREATE TABLE `a_1_12_1` (
   `a_1_12_1_look` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- 資料表的匯出資料 `a_1_12_1`
---
-
-INSERT INTO `a_1_12_1` (`a_1_12_1_seq`, `a_1_12_1_name`, `a_1_12_1_url`, `a_1_12_1_look`) VALUES
-(3, '登入管理', '/', 1),
-(4, '網站首頁', '/login.php', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -231,13 +223,6 @@ CREATE TABLE `a_1_12_2` (
   `a_1_12_2_url` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `a_1_12_2_a_1_12_1` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- 資料表的匯出資料 `a_1_12_2`
---
-
-INSERT INTO `a_1_12_2` (`a_1_12_2_seq`, `a_1_12_2_name`, `a_1_12_2_url`, `a_1_12_2_a_1_12_1`) VALUES
-(7, '更多內容', '/news_list.php', 3);
 
 --
 -- 已匯出資料表的索引
@@ -359,13 +344,13 @@ ALTER TABLE `a_1_9_news`
 -- 使用資料表 AUTO_INCREMENT `a_1_12_1`
 --
 ALTER TABLE `a_1_12_1`
-  MODIFY `a_1_12_1_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `a_1_12_1_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用資料表 AUTO_INCREMENT `a_1_12_2`
 --
 ALTER TABLE `a_1_12_2`
-  MODIFY `a_1_12_2_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `a_1_12_2_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -36,8 +36,9 @@ if(!empty($_POST["acc"])){
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
-                    	                            <span class="t botli">主選單區</span>
-                                                </div>
+                    <span class="t botli">主選單區</span>
+<?php include_once("left_menu_list.php");?><!--左邊選單-->
+                </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     	<span class="t">進站總人數 :<?php include_once("total.php");?></span>
                     </div>
@@ -74,6 +75,7 @@ if(!empty($_POST["acc"])){
                 	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;login.php&#39;)">管理登入</button>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
+<?php include_once("index_1_6.php");?>
 						                        <script>
                         	var nowpage=0,num=0;
 							function pp(x)

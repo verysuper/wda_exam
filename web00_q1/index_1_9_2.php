@@ -9,7 +9,7 @@ $x0x = mysqli_num_rows($oo);
                             <ul class="sswww" style="list-style-type:decimal;">
 <?php
 $now_page = 1;
-//if(!empty($_GET["page"])){ $now_page = $_GET["page"]; }
+if(!empty($_GET["page2"])){ $now_page = $_GET["page2"]; }
 $page_add = 5;
 
 $all_page = ceil($x0x/$page_add);
@@ -19,36 +19,35 @@ $sql = "select * from a_1_9_news where a_1_4_m_look = 1 limit $open_page,$page_a
 $oo = mysqli_query($link,$sql);
 $xx = mysqli_fetch_assoc($oo);
 
-do{
-  echo "<li>".mb_substr($xx["a_1_4_m_word"],0,10,"utf-8")."...<div class = 'all' style ='display:none;'>".$xx["a_1_4_m_word"]."</div></li>";
-}while($xx = mysqli_fetch_assoc($oo));
 
-/*
-echo "全部有".$x0x."筆資料<br>";
-echo "這是第".$now_page."頁<br>";
-echo "全部有".$all_page."頁<br>";
+$data_list = $open_page + 1;
+do{
+  echo "<div>".$data_list.". ".mb_substr($xx["a_1_4_m_word"],0,10,"utf-8")."...<div class = 'all' style ='display:none;'>".$xx["a_1_4_m_word"]."</div></div>";
+  $data_list = $data_list +1;  
+}while($xx = mysqli_fetch_assoc($oo));
 
 $pp = $now_page -1;//計算上一頁的頁碼
 $np = $now_page +1;//計算下一頁的頁碼
 
+?>
+                            </ul>
+<div style="text-align:center;">
+<?php
+
 if($now_page > 1){
-  echo "<a href='?page=".$pp."'>＜</a> ";
+  echo "<a href='?page2=".$pp."' class='bl' style='font-size:30px;'>&lt;&nbsp;</a> ";
 }
 
 for($i=1;$i<=$all_page;$i++){
   if($now_page == $i){//當前的頁數取消連結並放大+紅字
-    echo "-<ooxx style ='font-size: 60px;color:#f00;'>".$i."</ooxx>-";
+    echo "-<ooxx style ='font-size: 30px;color:#f00;'>".$i."</ooxx>-";
   }else{
-    echo "-<a href='?page=".$i."'>".$i."</a>-";  
+    echo "-<a href='?page2=".$i."'>".$i."</a>-";  
   }
 }
 if($now_page < $all_page){
-  echo " <a href='?page=".$np."'>＞</a>";
+  echo " <a href='?page2=".$np."' class='bl' style='font-size:30px;' >&nbsp;&gt;</a>";
 }
-*/
 ?>
-                            </ul>
-<div style="text-align:center;">
-  <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&lt;&nbsp;</a>
-  <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&nbsp;&gt;</a>
+
 </div>
