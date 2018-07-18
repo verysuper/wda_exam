@@ -1,6 +1,6 @@
 <?php include("head.php");?>
 <?php
-  $nowpage="po";//設定如果沒有URL參數時，系統預設的頁面(首頁)
+  $nowpage="index";//設定如果沒有URL參數時，系統預設的頁面(首頁)
   if(!empty($_GET["do"])){
     $nowpage=$_GET["do"];//設定如果有URL參數時，載入與參數對應的頁面
   }
