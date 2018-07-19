@@ -30,8 +30,51 @@
   }
  }
 ?>
+<?php
+    if(!empty($_POST["del"][0])){
+      for($i=0;$i< count($_POST["del"]);$i++){
+        $sql = "delete from q2_member where q_m_seq = '".$_POST["del"][$i]."'";
+        mysqli_query($link,$sql);
+      }
+    }
+    $sql = "select * from q2_member";
+    $ro = mysqli_query($link,$sql);
+    $or = mysqli_fetch_assoc($ro);
+
+?>
 <fieldset>
-  <legend>會員註冊</legend>
+  <legend>帳號管理</legend>
+<form method="post">
+<table width="600" border="1" align="center" cellpadding="3" cellspacing="0">
+  <tr>
+    <td align="center">帳號</td>
+    <td align="center">密碼</td>
+    <td align="center">刪除</td>
+  </tr>
+<?php
+  do{
+  $pw = "";
+  for($i=0;$i< strlen($or["q_m_pw"]);$i++){
+    $pw = $pw."＊";
+  }
+?>
+  <tr>
+    <td align="center" valign="middle"><?=$or["q_m_id"]?></td>
+    <td align="center" valign="middle"><?=$pw?></td>
+    <td align="center" valign="middle"><input type="checkbox" name="del[]" value="<?=$or["q_m_seq"]?>"></td>
+  </tr>
+<?php }while($or = mysqli_fetch_assoc($ro));?>
+  <tr>
+    <td colspan="3" align="center">
+      <input type="submit" value="確定刪除">
+      <input type="reset" value="清空選取">
+    </td>
+  </tr>
+</table>
+</form>
+
+<br><br>
+
 <form method="post">
 <table width="600" border="0" align="center" cellpadding="3" cellspacing="1">
   <tr>

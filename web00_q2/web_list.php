@@ -5,10 +5,17 @@
   $web_list["pop"]="";
   $web_list["know"]="";
   $web_list["que"]="";
+  
+  $web_list["check"]="search_password.php";
+  $web_list["login"]="login.php";
 
   $web_list["add_login"]="add_login.php";
+  
+  $web_list["admin_login"]="admin_login.php";
+  
 
   $web_map_list["index"]="首頁";//預設值用
+  $web_map_list["indexa1"]="";//預設值用
   
   $web_map_list["po"]="首頁 > 分類網誌";
   $web_map_list["poindex"]=" > 健康新知";//預設值用

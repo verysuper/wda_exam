@@ -1,9 +1,16 @@
 <?php include("head.php");?>
 <?php
-  $nowpage="index";//設定如果沒有URL參數時，系統預設的頁面(首頁)
-  if(!empty($_GET["do"])){
-    $nowpage=$_GET["do"];//設定如果有URL參數時，載入與參數對應的頁面
+  $enter = 0;
+  if(!empty($_SESSION["player"])){
+    if($_SESSION["player"]=="admin"){
+      $enter = 1;
+    }
   }
+  $nowpage="index";
+  if(!empty($_GET["do"])){
+    $nowpage=$_GET["do"];
+  }
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
@@ -28,17 +35,29 @@
         </div>
         <div id="mm">
         	<div class="hal" id="lef">
+<?php if($enter == 0){?><!--使用者介面-->
             <a class="blo" href="?do=po">分類網誌</a>
             <a class="blo" href="?do=news">最新文章</a>
             <a class="blo" href="?do=pop">人氣文章</a>
             <a class="blo" href="?do=know">講座訊息</a>
             <a class="blo" href="?do=que">問卷調查</a>
+<?php }else{?><!--管理者介面-->
+            <a class="blo" href="?do=admin_login">帳號管理</a>
+            <a class="blo" href="#">分類網誌</a>
+            <a class="blo" href="?do=pop">最新文章管理</a>
+            <a class="blo" href="#">講座管理</a>
+            <a class="blo" href="?do=que">問卷管理</a>
+<?php }?>          
           </div>
             <div class="hal" id="main">
             	<div>
 <marquee style="width:81%;position:relative;top:5px">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
                 	<span style="width:18%; display:inline-block;">
-                    	                    	<a href="?do=login">會員登入</a>
+                    	                    	<?php if(empty($_SESSION["player"])){?>
+                                              <a href="?do=login">會員登入</a>
+                                            <?php }else{?>
+                                              歡迎，<?=$_SESSION["player"]?> <a href="out.php">登出</a>
+                                            <?php }?>
                     	                    </span>
 <?php include_once($web_list[$nowpage]);?>
                 </div>
