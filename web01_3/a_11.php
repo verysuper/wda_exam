@@ -15,9 +15,9 @@
   </tr>
   <tr class="yel">
     <td width="45%"><img src="upload/<?='123.jpg'?>" alt=""></td>
-    <td width="23%">替代文字</td>
-    <td width="7%">顯示</td>
-    <td width="7%">刪除</td>
+    <td width="23%"><input name="alt" type="text" /></td>
+    <td width="7%"><input name="display" type="radio" value="" /></td>
+    <td width="7%"><input name="del" type="checkbox" value="" /></td>
     <td></td>
   </tr>
   </tbody>
