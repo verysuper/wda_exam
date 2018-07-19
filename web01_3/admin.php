@@ -1,4 +1,13 @@
-﻿<?php include_once('_config.php');?>
+﻿<?php 
+include_once('_config.php');
+if(!isset($_SESSION['admin'])){
+	header('location:login.php');
+	exit();
+}
+if(!isset($_GET['redo'])){
+	$_GET['redo']='title';
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0068)?do=admin&redo=title -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -42,25 +51,12 @@
                 	                     <!--正中央-->
                                                     <table width="100%">
                                 	<tbody><tr>
-                                    	<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td><td><button onclick="document.cookie=&#39;user=&#39;;location.replace(&#39;?&#39;)" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
+                                    	<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td>
+										<td><button onclick="lo('logout.php')" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
                                     </tr>
                                 </tbody></table>
-                                <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-                                    <p class="t cent botli">網站標題管理</p>
-        <form method="post" target="back" action="?do=tii">
-    <table width="100%">
-    	<tbody><tr class="yel">
-        	<td width="45%">網站標題</td><td width="23%">替代文字</td><td width="7%">顯示</td><td width="7%">刪除</td><td></td>
-                    </tr>
-    </tbody></table>
-           <table style="margin-top:40px; width:70%;">
-     <tbody><tr>
-      <td width="200px"><input type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=title&#39;)" value="新增網站標題圖片"></td><td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
-     </tr>
-    </tbody></table>    
-
-        </form>
-                                    </div>
+<!-- admin_main -->
+<?php Include_once($list[$_GET['redo']]);?>
                                                 </div>
                 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>

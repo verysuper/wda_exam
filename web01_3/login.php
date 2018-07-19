@@ -1,4 +1,19 @@
-<?php include_once('_config.php');?>
+<?php 
+include_once('_config.php');
+if(isset($_SESSION['admin'])){
+	header('location:admin.php');
+}
+if(isset($_REQUEST['acc']) && isset($_REQUEST['ps'])){
+	$sql="SELECT * FROM admins WHERE acc='{$_REQUEST['acc']}' and ps='{$_REQUEST['ps']}'";
+	$result=$conn->query($sql);
+	if($result->rowCount()!=1){
+		echo "<script>alert('帳號或密碼輸入錯誤');</script>";
+	}else{
+		$_SESSION['admin']=$_REQUEST['acc'];
+		header('location:admin.php');
+	}
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0048)?do=admin -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -35,10 +50,10 @@
                     	                    <?=$ads?></marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
-                                            		<form method="post" action="?do=check" target="back">
+                                            		<form method="post"> <!--刪掉 action="?do=check" target="back">-->
                         	    	<p class="t botli">管理員登入區</p>
-                        			<p class="cent">帳號 ： <input name="acc" autofocus="" type="text"></p>
-                        	        <p class="cent">密碼 ： <input name="ps" type="password"></p>
+                        			<p class="cent">帳號 ： <input name="acc" autofocus="" type="text" required="required"></p>
+                        	        <p class="cent">密碼 ： <input name="ps" type="password" required="required"></p>
                         	        <p class="cent"><input value="送出" type="submit"><input type="reset" value="清除"></p>
                         	    </form>
                         	                </div>

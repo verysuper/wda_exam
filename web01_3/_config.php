@@ -81,4 +81,13 @@
   while($row=$result->fetch(PDO::FETCH_ASSOC)){
     $bottoms=$row;
   }
+
+  //admin page mapping 
+  $list['title']='a_11.php';
+  $list['ad']='';
+  $list['mvim'] = '';
+  $list['image'] = '';
+  $list['total'] = '';
+  $list['bottom'] = '';
+  $list['news'] = '';
 ?>

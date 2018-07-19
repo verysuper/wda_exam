@@ -18,7 +18,7 @@
   // while($row=$result->fetch(PDO::FETCH_ASSOC)){  }
   for($x=1;$x<=5;$x++){
 		$row=$result->fetch(PDO::FETCH_ASSOC);
-		$newsToindex .="<li>".mb_substr($row['news'],0,25)."...<div class = 'all' style ='display:none;'>".$row['news']."</div></li>";
+		$newsToindex .="<li>".mb_substr($row['news'],0,10)."...<div class = 'all' style ='display:none;'>".$row['news']."</div></li>";
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

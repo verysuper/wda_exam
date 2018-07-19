@@ -1,22 +1,23 @@
 <?php
 include_once '_config.php';
-//6.newss************newss
-$newsToindex = "";
+
 $result = $conn->query("select * from newss where display = 1;");
 $news_length = $result->rowCount();
 $totalp = ceil($news_length / 5);
 
-$crr_page = 1;
+$currp = 1;
 if (!empty($_GET['p'])) {
-    $crr_page = $_GET['p'];
+    $currp = $_GET['p'];
 }
-
-$result = $conn->query("select * from newss where display = 1 limit {$crr_page},5;");
-
+$startp=($currp-1)*5;
+$result = $conn->query("select * from newss where display = 1 limit {$startp},5;");
+$newsToNewss = "";
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    $newsToNewss .= "<li>" . mb_substr($row['news'], 0, 25) . "...<div class = 'all' style ='display:none;'>" . $row['news'] . "</div></li>";
+    $newsToNewss .= "<li>" . mb_substr($row['news'], 0, 10) . "...<div class = 'all' style ='display:none;'>" . $row['news'] . "</div></li>";
 }
 
+$lastp=$currp-1;
+$nextp=$currp+1;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0055)?do=meg -->
@@ -59,17 +60,17 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 						<ol style="text-align:left;">
 						<?=$newsToNewss?>
 						</ol>
-    <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&lt;&nbsp;</a>
+    <a class="bl" style="font-size:30px;" href="?p=<?=($lastp>1?$lastp:1)?>">&lt;&nbsp;</a>
 <?php
 for ($i = 1; $i <= $totalp; $i++) {
-    if ($i != $crr_page) {
+    if ($i != $currp) {
         echo '<a class="bl" style="font-size:30px;" href="?p=' . $i . '">' . $i . '</a>';
     } else {
         echo '<a class="bl" style="font-size:50px;" href="?p=' . $i . '">' . $i . '</a>';
     }
 }
 ?>
-        <a class="bl" style="font-size:30px;" href="?do=meg&p=0">&nbsp;&gt;</a>
+        <a class="bl" style="font-size:30px;" href="?p=<?=($nextp <= $totalp?$nextp:$totalp)?>">&nbsp;&gt;</a>
     </div>
 	                </div>
             <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
