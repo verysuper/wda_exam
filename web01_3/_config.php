@@ -83,7 +83,7 @@
   }
 
   //admin page mapping 
-  $list['title']='a_11.php';
+  $list['title']='a_main.php';
   $list['ad']='';
   $list['mvim'] = '';
   $list['image'] = '';
