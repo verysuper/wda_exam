@@ -15,18 +15,18 @@
   //2.menu
 	$menu = "";
 	// 先取主選單
-  $result = $conn->query("select * from menus where parent = 0");
+  $result = $conn->query("select * from menus where parent = 0 and display = 1");
 	while($row = $result->fetch(PDO::FETCH_ASSOC))
 	{
 		$menu .= "<div class='mainmu' align='center'>
-			<a href='".$row["href"]."' align='center'>".$row["menu"]."</a>";
+			<a href='".$row["href"]."'>".$row["menu"]."</a>";
 		
 		// 再取次選單
-    $result2 = $conn->query("select * from menus where parent = ".$row["id"]."");
+    $result2 = $conn->query("select * from menus where parent = '{$row["id"]}' and display = 1");
 		while($row2 = $result2->fetch(PDO::FETCH_ASSOC))
 		{		
 			$menu .= "<div class='mainmu2 mw' align='center' style='display:none'>
-			<a href='".$row2["href"]."' align='center'>".$row2["menu"]."</a>
+			<a href='".$row2["href"]."'>".$row2["menu"]."</a>
 			</div>";
 		}
 							
@@ -83,11 +83,13 @@
   }
 
   //admin page mapping 
-  $list['title']='a_main.php';
+  $list['title']='a1_main.php';
   $list['ad']='';
   $list['mvim'] = '';
   $list['image'] = '';
   $list['total'] = '';
   $list['bottom'] = '';
   $list['news'] = '';
+  $list['menu1'] = 'a91_main.php';
+  $list['menu2'] = 'a92_main.php';
 ?>

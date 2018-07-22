@@ -41,7 +41,7 @@ if(!isset($_GET['redo'])){
 <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=bottom"><div class="mainmu">頁尾版權資料管理</div></a>
 <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=news"><div class="mainmu">最新消息資料管理</div></a>
 <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=admin"><div class="mainmu">管理者帳號管理</div></a>
-<a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=menu"><div class="mainmu">選單管理</div></a>
+<a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=menu1"><div class="mainmu">選單管理</div></a><!-- menu1 -->
 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     	<span class="t">進站總人數 : <?=$totals['total']?></span>

@@ -1,13 +1,39 @@
 ﻿<?php
 include_once '_config.php';
-$currTime = date("m 月 d 號 l", strtotime('now'));
 
+$currTime = strtotime('today GMT+8');
+//admin=999,member=1,visitor=0
+//處理訪客
+if(!isset($_SESSION['acc'])){
+  $sql="update visit set count = count+1 where time='{$currTime}'";
+  $result=$conn->query($sql);
+  if(!$result->rowCount()>0){
+    $sql="insert into visit values(null,'{$currTime}','1')";
+    $result=$conn->query($sql);
+  }
+  $_SESSION['acc']='visitor';
+}
+$today = date("m 月 d 號 l", $currTime);
+//total visited
 $result = $conn->query("select sum(count) as count from visit");
 $visTotal = $result->fetch()['count'];
-$result = $conn->query("select count from visit where time = {$today}");
+//today visited
+$result = $conn->query("select count from visit where time = {$currTime}");
 $visToday = $result->fetch()['count'];
 
-// $_SESSION["acc"]='aaaaa'; //test
+//處理會員
+$_SESSION['acc']='admin';
+switch($_SESSION['acc']){
+	case 'admin':
+		$type=999;
+		break;
+	case 'visitor':
+		$type=0;
+		break;
+	default:
+		$type=1;
+}
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
@@ -26,61 +52,49 @@ $visToday = $result->fetch()['count'];
 <iframe name="back" style="display:none;"></iframe>
 	<div id="all">
     	<div id="title" width="80%">
-        <?=$currTime?> | 今日瀏覽: <?=$visToday?> | 累積瀏覽: <?=$visTotal?>
-		<a href="index1.php" style="float:right">回首頁</a></div>
+        <?=$today?> | 今日瀏覽: <?=$visToday?> | 累積瀏覽: <?=$visTotal?>
+			<a href="index1.php" style="float:right">回首頁</a></div>
 		<div id="title2">
-			<img src="./home_files/02B01.jpg" width="100%" height="100%" alt="健康促進網 - 回首頁" title="健康促進網 - 回首頁">
+			<img src="./home_files/02B01.jpg" width="100%" alt="健康促進網 - 回首頁" title="健康促進網 - 回首頁">
         </div>
         <div id="mm">
 <div class="hal" id="lef">
 	<?php
-// 這邊以GET do判斷網頁內容區的顯示內容
-// 如果是顯示管理頁面的話，側邊選單顯示管理員選單
-// 管理員選單頁面版型沒有提供，所以我複製版型提供的選單
-// 改字後在每個do變數前面加個a，代表是管理員頁面
-if (!empty($_GET["do"]) && (
-    ($_GET["do"] == "admin") || ($_GET["do"] == "aacc") || ($_GET["do"] == "apo") || ($_GET["do"] == "anews") || ($_GET["do"] == "aknow") || ($_GET["do"] == "aque"))) {
-    ?>
+		if($type>1){
+			?>
 			<a class="blo" href="?do=aacc">帳號管理</a>
 			<a class="blo" href="?do=apo">分類網誌</a>
 			<a class="blo" href="?do=anews">最新文章管理</a>
 			<a class="blo" href="?do=aknow">講座管理</a>
 			<a class="blo" href="?do=aque">問卷管理</a>
 			<?php
-}
-// 如果是顯示一般頁面的話，側邊選單顯示一般選單
-else {
-    ?>
+		}else{
+			?>
 			<a class="blo" href="?do=po">分類網誌</a>
 			<a class="blo" href="?do=news">最新文章</a>
 			<a class="blo" href="?do=pop">人氣文章</a>
 			<a class="blo" href="?do=know">講座訊息</a>
 			<a class="blo" href="?do=que">問卷調查</a>
 			<?php
-}
-?>
+		}
+	?>
  </div>
             <div class="hal" id="main">
             	<div>
 <marquee width="82%">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
  		<span style="width:18%; display:inline-block; float:right">
 			<?php
-				// 這邊以session acc代表登入帳號
-				// 下一步做登入登出時會用
-				// 如果沒有session，顯示會員登入，按下去後網頁內容區顯示登入表單
-				if(empty($_SESSION["acc"]))
+				if($type<1)
 				{
-					?>
-					<a href="?do=login">會員登入</a>
-					<?php
+					echo "<a href='?do=login'>會員登入</a>";
 				}
-				// 如果有session，顯示會員帳號和登出按鈕
-				// 如果是管理員，顯示管理按鈕
-				// 
 				else 
 				{
-					echo "歡迎，".$_SESSION["acc"]."<a href='?do=logout'>登出</a>";
-					if($_SESSION["acc"] == "admin" )	echo "<a href='?do=admin'>管理</a>";
+					echo "歡迎，".$_SESSION["acc"]."　";
+					if($type>1){
+						echo "<br><a href='?do=admin'>管理</a>|";
+					}
+					echo "<a href='?do=logout'>登出</a>";
 				}
 			?>
 		</span>
