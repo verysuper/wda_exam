@@ -33,11 +33,15 @@ a:hover
 {
 	min-height:570px;
 }
-#all
+#all/*???????????????*/
 {
+/*
 	padding:2px;
 	width:1020px;
 	height:888px;
+*/
+	width:1024px;
+	height:768px;
 	background:#FFF;
 	margin:10px auto 10px auto;
 	box-shadow:#999 0px 0px 1px .3px;
@@ -81,11 +85,12 @@ a:hover
 {
 	padding:20px 5px 20px 5px;
 }
-#bottom
+#bottom /*????????????*/
 {
-	margin: 0px;
 	text-align:right;
-	padding:0px;
+	padding:24px;
+  position: relative;
+  top: -30px;
 }
 a.button
 {

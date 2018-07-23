@@ -22,7 +22,7 @@ $result = $conn->query("select count from visit where time = {$currTime}");
 $visToday = $result->fetch()['count'];
 
 //處理會員
-$_SESSION['acc']='admin';
+// $_SESSION['acc']='admin';
 switch($_SESSION['acc']){
 	case 'admin':
 		$type=999;
@@ -98,7 +98,7 @@ switch($_SESSION['acc']){
 				}
 			?>
 		</span>
-<div class="">
+		<div class="">
 			<?php
 				// 如果沒有get變數，顯示首頁
 				// 首頁標籤頁接下來會用DreamWeaver做，不需要php，html就好
@@ -106,62 +106,26 @@ switch($_SESSION['acc']){
 				{
 					include "frame.html";
 				}
-				// 如果GET變數是login，顯示登入
-				// 以下類推
-				// logout之後打在auth.php
-				elseif($_GET["do"] == "login")
-				{
-					include "login.php";
-				}
-				elseif($_GET["do"] == "forget")
-				{
-					include "forget.php";
-				}
-				elseif($_GET["do"] == "reg")
-				{
-					include "reg.php";
-				}
-				elseif($_GET["do"] == "po")
-				{
-					include "po.php";
-				}
-				elseif($_GET["do"] == "pop")
-				{
-					include "pop.php";
-				}
-				elseif($_GET["do"] == "news")
-				{
-					include "news.php";
-				}
-				elseif($_GET["do"] == "que")
-				{
-					include "que.php";
-				}
 				// 管理員首頁只有一句話，不需要再另開一個檔案，直接echo就好
 				elseif($_GET["do"] == "admin")
 				{
 					echo "請選擇管理項目";
 				}
-				elseif($_GET["do"] == "aacc")
+				// 如果GET變數是login，顯示登入login.php
+				// logout之後打在auth.php
+				else
 				{
-					include "aacc.php";
+					include $_GET["do"].".php";
 				}
-				elseif($_GET["do"] == "anews")
-				{
-					include "anews.php";
-				}
-				elseif($_GET["do"] == "aque")
-				{
-					include "aque.php";
-				}
+
 			?>
 		</div>
                 </div>
             </div>
         </div>
         <div id="bottom">
-    	    本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © 2018健康促進網社群平台 All Right Reserved
-    		 <br>服務信箱：health@test.labor.gov.tw<img src="./home_files/02B02.jpg" width="45">
+    	    本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © <script>document.write(new Date().getFullYear())</script>健康促進網社群平台 All Right Reserved
+    		 <br>服務信箱：health@test.labor.gov.tw<img src="./home_files/02B02.jpg" width="30">
         </div>
     </div>
 

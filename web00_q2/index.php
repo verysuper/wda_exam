@@ -44,7 +44,7 @@
 <?php }else{?><!--管理者介面-->
             <a class="blo" href="?do=admin_login">帳號管理</a>
             <a class="blo" href="#">分類網誌</a>
-            <a class="blo" href="?do=pop">最新文章管理</a>
+            <a class="blo" href="?do=admin_news">最新文章管理</a>
             <a class="blo" href="#">講座管理</a>
             <a class="blo" href="?do=que">問卷管理</a>
 <?php }?>          

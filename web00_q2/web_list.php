@@ -1,7 +1,7 @@
 <?php
   $web_list["index"]="main.php";
   $web_list["po"]="p0.php";
-  $web_list["news"]="";
+  $web_list["news"]="new_list.php";
   $web_list["pop"]="";
   $web_list["know"]="";
   $web_list["que"]="";
@@ -12,6 +12,7 @@
   $web_list["add_login"]="add_login.php";
   
   $web_list["admin_login"]="admin_login.php";
+  $web_list["admin_news"]="admin_article.php";
   
 
   $web_map_list["index"]="首頁";//預設值用
