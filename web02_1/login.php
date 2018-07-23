@@ -40,11 +40,11 @@
     <td>
       <input type="submit" name="button" id="button" value="登入" />
       <input type="reset" name="button2" id="button2" value="清除" /></td>
-    <td><a href="index.php?do=forget">忘記密碼</a> | <a href="index.php?do=reg">尚未註冊</a></td>
+    <td><a href="?do=forget">忘記密碼</a> | <a href="?do=reg">尚未註冊</a></td>
   </tr>
 </table>
-
 </fieldset>
+
 </form>
 </body>
 </html>
