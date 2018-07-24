@@ -46,7 +46,7 @@
             <a class="blo" href="#">分類網誌</a>
             <a class="blo" href="?do=admin_news">最新文章管理</a>
             <a class="blo" href="#">講座管理</a>
-            <a class="blo" href="?do=que">問卷管理</a>
+            <a class="blo" href="?do=admin_qa">問卷管理</a>
 <?php }?>          
           </div>
             <div class="hal" id="main">

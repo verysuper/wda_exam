@@ -19,12 +19,30 @@
     while($row=$result->fetch(PDO::FETCH_ASSOC)){
   ?>
   <tr>
-    <td width="40%"><?=$row['title']?></td>
-    <td><?=mb_substr($row['content'],0,10)?></td>
+    <td width="40%" bgcolor='#ccc'><?=$row['title']?></td>
+    <td><?=mb_substr($row['content'],0,10)?>...</td>
   </tr>
   <?php
     }
   ?>
+  <tr>
+    <td colspan='2'>
+<?php
+  $last=$pCurrent-1;
+  $next=$pCurrent+1;
+  if($last == 1){
+    echo "<a href='?do=news&p={$last}' style='font-size:30px'><</a>";
+  }
+  for($i=1;$i<=$pTotal;$i++){
+      echo "<a href='?do=news&p={$i}' style='font-size:".($i==$pCurrent?'50px':'30px').";'>{$i}</a>";
+  }
+  if ($next == $pTotal) {
+    echo "<a href='?do=news&p={$next}' style='font-size:30px'>></a>";
+}
+
+?>
+    </td>
+  </tr>
 </table>
 
 </fieldset>

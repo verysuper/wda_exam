@@ -5,7 +5,7 @@
   $web_list["news_look"]="new_look.php";
   $web_list["pop"]="l7_list.php";
   $web_list["know"]="";
-  $web_list["que"]="";
+  $web_list["que"]="qa_list.php";
   
   $web_list["check"]="search_password.php";
   $web_list["login"]="login.php";
@@ -14,6 +14,7 @@
   
   $web_list["admin_login"]="admin_login.php";
   $web_list["admin_news"]="admin_article.php";
+  $web_list["admin_qa"]="admin_qa.php";
   
 
   $web_map_list["index"]="首頁";//預設值用
