@@ -3,7 +3,7 @@
   $web_list["po"]="p0.php";
   $web_list["news"]="new_list.php";
   $web_list["news_look"]="new_look.php";
-  $web_list["pop"]="l7_list.php";
+  $web_list["pop"]="";
   $web_list["know"]="";
   $web_list["que"]="";
   

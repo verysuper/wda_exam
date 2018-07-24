@@ -27,8 +27,8 @@
       </tr>
 <?php do{?>
   <tr>
-    <td align="left" onclick="document.location.href='?do=news_look&read=<?=$rr["a_seq"]?>'" style="background-color:#f0f0f0;"><?=$rr["a_title"]?></td>
-    <td align="left" onclick="document.location.href='?do=news_look&read=<?=$rr["a_seq"]?>'"><?=mb_substr($rr["a_cont"],0,15,"utf-8")?>...</td>
+    <td align="left" onclick="new_read(<?=$rr["a_seq"]?>)" style="background-color:#f0f0f0;"><?=$rr["a_title"]?></td>
+    <td align="left" onclick="new_read(<?=$rr["a_seq"]?>)"><span id="x<?=$rr["a_seq"]?>"><?=mb_substr($rr["a_cont"],0,15,"utf-8")?>...</span></td>
   </tr>
 <?php }while($rr = mysqli_fetch_assoc($ro));?>
       <tr>
@@ -48,3 +48,10 @@
       </tr>
     </table>
   </fieldset>
+<script>
+  function new_read(news_list){
+    $.post("new_api.php",{news_list},function(dd){
+      document.getElementById("x"+news_list).innerHTML=dd;
+    });
+  }
+</script>
