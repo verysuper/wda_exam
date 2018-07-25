@@ -15,7 +15,7 @@
         $error = "密碼錯誤";
       }else{
         $_SESSION["player"] =$_POST["my_id"];
-        ?><script>document.location.href='/'</script><?php  
+        ?><script>document.location.href='?do=po'</script><?php  
       }    
     }
     if($error != 1){ ?><script>alert("<?=$error?>");</script><?php }

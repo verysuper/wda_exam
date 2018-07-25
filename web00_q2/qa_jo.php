@@ -28,7 +28,7 @@ $vi_width = $vi_now * 3;
       </tr>
 <?php }while($rrr = mysqli_fetch_assoc($ro));?>
       <tr>
-        <td colspan="2" align="center"><input type="button" value = "返回" onclick = "document.location.href='/?do=que';"></td>
+        <td colspan="2" align="center"><input type="button" value = "返回" onclick = "document.location.href='?do=que';"></td>
       </tr>
     </table>
 </fieldset>

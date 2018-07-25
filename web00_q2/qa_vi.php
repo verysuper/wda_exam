@@ -6,7 +6,7 @@ $rrr = mysqli_fetch_assoc($ro);
 if(!empty($_POST["ya"])){
   $sql = "insert into qa_log value(null,'".$_GET["list"]."','".$_POST["ya"]."','".$_SESSION["player"]."')";
   mysqli_query($link,$sql);
-  ?><script>document.location.href="/?do=que";</script><?php
+  ?><script>document.location.href="?do=que";</script><?php
 }
 ?>
 <form method="post">

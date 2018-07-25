@@ -37,7 +37,7 @@
         // 檢查使用者有沒有給這個文章讚
         // 使用素材js.js附的good function，值為文章id、讚(1)或收回(2)、使用者帳號
         // 超連結id必須是good加文章id
-        $sql2="select * from ilike where u_id='{$_SESSION['acc']}' and a_id='{$row['id']}'";
+        $sql2="select * from ilike where acc='{$_SESSION['acc']}' and a_id='{$row['id']}'";
         $result2=$conn->query($sql2);
         if($result2->rowCount()>0){
           ?>
