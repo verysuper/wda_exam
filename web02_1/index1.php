@@ -25,13 +25,13 @@ $visToday = $result->fetch()['count'];
 // $_SESSION['acc']='admin';
 switch($_SESSION['acc']){
 	case 'admin':
-		$type=999;
+		$uType=999;
 		break;
 	case 'visitor':
-		$type=0;
+		$uType=0;
 		break;
 	default:
-		$type=1;
+		$uType=1;
 }
 
 ?>
@@ -60,7 +60,7 @@ switch($_SESSION['acc']){
         <div id="mm">
 <div class="hal" id="lef">
 	<?php
-		if($type>1){
+		if($uType>1){
 			?>
 			<a class="blo" href="?do=aacc">帳號管理</a>
 			<a class="blo" href="?do=apo">分類網誌</a>
@@ -81,18 +81,18 @@ switch($_SESSION['acc']){
  </div>
             <div class="hal" id="main">
             	<div>
-<marquee width="82%">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
- 		<span style="width:18%; display:inline-block; float:right">
+<marquee width="78%">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
+ 		<span style="width:22%; display:inline-block; float:right">
 			<?php
-				if($type<1)
+				if($uType<1)
 				{
 					echo "<a href='?do=login'>會員登入</a>";
 				}
 				else 
 				{
-					echo "歡迎，".$_SESSION["acc"]."　";
-					if($type>1){
-						echo "<br><a href='?do=admin'>管理</a>|";
+					echo "歡迎，".$_SESSION["acc"];
+					if($uType>1){
+						echo "<a href='?do=admin'>管理</a>|";
 					}
 					echo "<a href='?do=logout'>登出</a>";
 				}
