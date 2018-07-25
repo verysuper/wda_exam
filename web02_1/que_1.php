@@ -3,12 +3,9 @@
     $id=$_GET['id'];
     $sum=$_GET['sum'];
     $topic=$_GET['topic'];
-  }else{
-    ?><script>document.location.href='?do=que'</script><?php
-  }
+
     $sql="select * from que where parent={$id}";
-    $result=$conn->query($sql);
-    
+    $result=$conn->query($sql);    
 ?>
 <fieldset><legend>目前位置：首頁 > 問卷調查 > <?=$topic?></legend>
 <form action="" method="post">
@@ -38,3 +35,9 @@
 </table>
 </form>
 </fieldset>
+
+<?php
+  }else{
+    ?><script>document.location.href='?do=que'</script><?php
+  }
+?>

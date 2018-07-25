@@ -25,7 +25,7 @@
     <td>
       <?php
         if($uType>0){
-          ?><a href='?do=que_2&id=<?=$row["id"]?>'>參與投票</a><?php
+          ?><a href='?do=que_2&id=<?=$row["id"]?>&topic=<?=$row['topic']?>'>參與投票</a><?php
         }else{
           ?>請先登入<?php
         }
