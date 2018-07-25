@@ -1,0 +1,20 @@
+css.css
+#main
+width 改1024px
+min-height 改 height 拿掉min-
+margin 改成10px auto 10px auto;
+
+以下隱藏
+padding:10px;
+border:#000 solid 1px;
+
+#right #left
+調整高度 min-height:550px; 改成height:478px;
+================================================================================================
+html
+尋找MENU的div的style加上 width:413px; float:right;
+用DIV把LOGO圖片包起來並上CSS控制 width: 590px;height:93px;float:left;
+圖片本身的IMG標籤也要加上width屬性590 width="590"
+
+在MENU的div的下面加上一行DIV把版面撐開
+<div style="width:100%;height:94px;"></div>
