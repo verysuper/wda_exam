@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-07-19 10:29:48
+-- 產生時間： 2018-07-25 04:53:54
 -- 伺服器版本: 10.1.31-MariaDB
 -- PHP 版本： 5.6.35
 
@@ -52,6 +52,30 @@ INSERT INTO `article` (`a_seq`, `a_title`, `a_cont`, `a_look`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `new_log`
+--
+
+CREATE TABLE `new_log` (
+  `nl_seq` int(10) UNSIGNED NOT NULL,
+  `nl_id` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nl_new_seq` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `new_log`
+--
+
+INSERT INTO `new_log` (`nl_seq`, `nl_id`, `nl_new_seq`) VALUES
+(5, 'aaa', 19),
+(6, 'aaa', 21),
+(18, 'ccc', 20),
+(19, 'ccc', 21),
+(20, 'ccc', 22),
+(21, 'ccc', 23);
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `player`
 --
 
@@ -69,7 +93,9 @@ INSERT INTO `player` (`p_seq`, `p_cnt`, `p_day`) VALUES
 (1, 3, '2018-07-17'),
 (2, 10, '2018-07-16'),
 (3, 2, '2018-07-18'),
-(4, 1, '2018-07-19');
+(4, 1, '2018-07-19'),
+(5, 1, '2018-07-24'),
+(6, 1, '2018-07-25');
 
 -- --------------------------------------------------------
 
@@ -89,7 +115,82 @@ CREATE TABLE `q2_member` (
 --
 
 INSERT INTO `q2_member` (`q_m_seq`, `q_m_id`, `q_m_pw`, `q_m_mail`) VALUES
-(4, 'admin', '1234', 'admin1234');
+(4, 'admin', '1234', 'admin1234'),
+(5, 'aaa', 'aaa', 'aaa'),
+(6, 'ccc', 'cc', 'cccc');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `qa_log`
+--
+
+CREATE TABLE `qa_log` (
+  `q_l_seq` int(10) UNSIGNED NOT NULL,
+  `q_l_qt` int(10) NOT NULL,
+  `q_l_select` int(10) NOT NULL,
+  `q_l_member` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `qa_log`
+--
+
+INSERT INTO `qa_log` (`q_l_seq`, `q_l_qt`, `q_l_select`, `q_l_member`) VALUES
+(1, 1, 5, 'ccc'),
+(2, 1, 3, 'ccc'),
+(3, 1, 6, 'ccc'),
+(4, 1, 3, 'ccc'),
+(5, 1, 3, 'ccc'),
+(6, 2, 8, 'ccc'),
+(7, 2, 9, 'ccc'),
+(8, 2, 10, 'ccc');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `qa_select`
+--
+
+CREATE TABLE `qa_select` (
+  `q_s_seq` int(10) UNSIGNED NOT NULL,
+  `q_s_qa` int(10) NOT NULL COMMENT '對應題目的索引鍵',
+  `q_s_con` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `qa_select`
+--
+
+INSERT INTO `qa_select` (`q_s_seq`, `q_s_qa`, `q_s_con`) VALUES
+(3, 1, '1.健走或爬樓梯、慢跑等較不受時間、場地限制的運動。'),
+(4, 1, '2.仰臥起坐、抬腿及伏地挺身、伸展操、瑜珈等室內運動。'),
+(5, 1, '3.球類運動、游泳、跳舞、騎腳踏車等加強心肺功能的運動。'),
+(6, 1, '4.舉重鍛鍊、彈力帶、啞鈴等運用輔助器材鍛鍊肌耐力的運動。'),
+(7, 2, '1.增加罹患冠狀動脈心臟病及罹病死亡之風險。'),
+(8, 2, '2.對孩子的的健康會產生許多影響，例如容易咳嗽或打噴嚏、罹患氣喘或讓症狀更嚴重、會因刺激耳咽管，感染中耳炎、肺功能較差、容易罹患呼吸道疾病等。'),
+(9, 2, '3.孕婦吸入二手菸易造成流產、早產、胎盤早期剝離、子宮感染等疾病。'),
+(10, 2, '4.長期的暴露會造成更嚴重的胸腔問題和過敏症，還會增加心臟病和肺癌的罹患率。'),
+(11, 2, '5.以上皆是。');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `qa_title`
+--
+
+CREATE TABLE `qa_title` (
+  `q_t_seq` int(10) UNSIGNED NOT NULL,
+  `q_t_title` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='題目';
+
+--
+-- 資料表的匯出資料 `qa_title`
+--
+
+INSERT INTO `qa_title` (`q_t_seq`, `q_t_title`) VALUES
+(1, '問題一：你最常做什麼運動來促進健康體能呢?'),
+(2, '問題二：二手菸沒有安全劑量，只要有暴露，就會有危險，請問它會造成身體上哪些危害?');
 
 --
 -- 已匯出資料表的索引
@@ -100,6 +201,12 @@ INSERT INTO `q2_member` (`q_m_seq`, `q_m_id`, `q_m_pw`, `q_m_mail`) VALUES
 --
 ALTER TABLE `article`
   ADD PRIMARY KEY (`a_seq`);
+
+--
+-- 資料表索引 `new_log`
+--
+ALTER TABLE `new_log`
+  ADD PRIMARY KEY (`nl_seq`);
 
 --
 -- 資料表索引 `player`
@@ -114,6 +221,24 @@ ALTER TABLE `q2_member`
   ADD PRIMARY KEY (`q_m_seq`);
 
 --
+-- 資料表索引 `qa_log`
+--
+ALTER TABLE `qa_log`
+  ADD PRIMARY KEY (`q_l_seq`);
+
+--
+-- 資料表索引 `qa_select`
+--
+ALTER TABLE `qa_select`
+  ADD PRIMARY KEY (`q_s_seq`);
+
+--
+-- 資料表索引 `qa_title`
+--
+ALTER TABLE `qa_title`
+  ADD PRIMARY KEY (`q_t_seq`);
+
+--
 -- 在匯出的資料表使用 AUTO_INCREMENT
 --
 
@@ -124,16 +249,40 @@ ALTER TABLE `article`
   MODIFY `a_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
+-- 使用資料表 AUTO_INCREMENT `new_log`
+--
+ALTER TABLE `new_log`
+  MODIFY `nl_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
 -- 使用資料表 AUTO_INCREMENT `player`
 --
 ALTER TABLE `player`
-  MODIFY `p_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `p_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- 使用資料表 AUTO_INCREMENT `q2_member`
 --
 ALTER TABLE `q2_member`
-  MODIFY `q_m_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `q_m_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- 使用資料表 AUTO_INCREMENT `qa_log`
+--
+ALTER TABLE `qa_log`
+  MODIFY `q_l_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- 使用資料表 AUTO_INCREMENT `qa_select`
+--
+ALTER TABLE `qa_select`
+  MODIFY `q_s_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- 使用資料表 AUTO_INCREMENT `qa_title`
+--
+ALTER TABLE `qa_title`
+  MODIFY `q_t_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

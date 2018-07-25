@@ -6,6 +6,8 @@
   $web_list["pop"]="l7_list.php";
   $web_list["know"]="";
   $web_list["que"]="qa_list.php";
+  $web_list["vi"]="qa_vi.php";
+  $web_list["jago"]="qa_jo.php";
   
   $web_list["check"]="search_password.php";
   $web_list["login"]="login.php";
