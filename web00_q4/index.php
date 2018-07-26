@@ -11,22 +11,11 @@
 <iframe name="back" style="display:none;"></iframe>
 	<div id="main">
     	<div id="top">
-        <div style="width: 590px;height:93px;float:left;">
         	<a href="?">
-            	<img src="./home_files/0416.jpg" width="590">
-          </a>
-        </div>
-        <div style="padding:10px;width: 413px;float:right;">
-                <a href="?">回首頁</a> |
-                <a href="?do=news">最新消息</a> |
-                <a href="?do=look">購物流程</a> |
-                <a href="?do=buycart">購物車</a> |
-                                <a href="?do=login">會員登入</a> |
-                                <a href="?do=admin">管理登入</a>
-        </div>
-        <div style="width:100%;height:94px;"></div>
-        情人節特惠活動 &nbsp; 為了慶祝七夕情人節，將舉辦情人兩人到現場有七七折之特惠活動~
-      </div>
+            	<img src="./home_files/0416.jpg" width="540">
+            </a><span style="padding:10px;"><a href="?">回首頁</a> | <a href="?do=news">最新消息</a> | <a href="?do=look">購物流程</a> | <a href="?do=buycart">購物車</a> | <a href="?do=login">會員登入</a> | <a href="?do=admin">管理登入</a></span>
+                        <div style="padding:10px;"></div>
+                情人節特惠活動 &nbsp; 為了慶祝七夕情人節，將舉辦情人兩人到現場有七七折之特惠活動~        </div>
         <div id="left" class="ct">
         	<div style="min-height:400px;">
         	            </div>
