@@ -19,6 +19,7 @@
     }
   }
 ?>
+<input type="button" value="返回" onclick = "document.location.href='/'"><br>
 <form method="post">
 <table width="95%" border="1" cellspacing="0" cellpadding="3">
   <tr>

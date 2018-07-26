@@ -4,14 +4,14 @@ include_once '_config.php';
 $currTime = strtotime('today GMT+8');
 //admin=999,member=1,visitor=0
 //處理訪客
-if(!isset($_SESSION['acc'])){
-  $sql="update visit set count = count+1 where time='{$currTime}'";
-  $result=$conn->query($sql);
-  if(!$result->rowCount()>0){
-    $sql="insert into visit values(null,'{$currTime}','1')";
-    $result=$conn->query($sql);
-  }
-  $_SESSION['acc']='visitor';
+if (!isset($_SESSION['acc'])) {
+    $sql = "update visit set count = count+1 where time='{$currTime}'";
+    $result = $conn->query($sql);
+    if (!$result->rowCount() > 0) {
+        $sql = "insert into visit values(null,'{$currTime}','1')";
+        $result = $conn->query($sql);
+    }
+    $_SESSION['acc'] = 'visitor';
 }
 $today = date("m 月 d 號 l", $currTime);
 //total visited
@@ -23,15 +23,15 @@ $visToday = $result->fetch()['count'];
 
 //處理會員
 // $_SESSION['acc']='admin';
-switch($_SESSION['acc']){
-	case 'admin':
-		$uType=999;
-		break;
-	case 'visitor':
-		$uType=0;
-		break;
-	default:
-		$uType=1;
+switch ($_SESSION['acc']) {
+    case 'admin':
+        $uType = 999;
+        break;
+    case 'visitor':
+        $uType = 0;
+        break;
+    default:
+        $uType = 1;
 }
 
 ?>
@@ -60,65 +60,65 @@ switch($_SESSION['acc']){
         <div id="mm">
 <div class="hal" id="lef">
 	<?php
-		if($uType>1){
-			?>
+if ($uType > 1) {
+    ?>
 			<a class="blo" href="?do=aacc">帳號管理</a>
 			<a class="blo" href="?do=apo">分類網誌</a>
 			<a class="blo" href="?do=anews">最新文章管理</a>
 			<a class="blo" href="?do=aknow">講座管理</a>
 			<a class="blo" href="?do=aque">問卷管理</a>
 			<?php
-		}else{
-			?>
+} else {
+    ?>
 			<a class="blo" href="?do=po">分類網誌</a>
 			<a class="blo" href="?do=news">最新文章</a>
 			<a class="blo" href="?do=pop">人氣文章</a>
 			<a class="blo" href="?do=know">講座訊息</a>
 			<a class="blo" href="?do=que">問卷調查</a>
 			<?php
-		}
-	?>
+}
+?>
  </div>
             <div class="hal" id="main">
             	<div>
 <marquee width="78%">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
  		<span style="width:22%; display:inline-block; float:right">
 			<?php
-				if($uType<1)
-				{
-					echo "<a href='?do=login'>會員登入</a>";
-				}
-				else 
-				{
-					echo "歡迎，".$_SESSION["acc"];
-					if($uType>1){
-						echo "<a href='?do=admin'>管理</a>|";
-					}
-					echo "<a href='?do=logout'>登出</a>";
-				}
-			?>
+if ($uType < 1) {
+    echo "<a href='?do=login'>會員登入</a>";
+} else {
+    echo "歡迎，" . $_SESSION["acc"];
+    if ($uType > 1) {
+        echo "<a href='?do=admin'>管理</a>|";
+    }
+    echo "<a href='?do=logout'>登出</a>";
+}
+?>
 		</span>
 		<div class="">
 			<?php
-				// 如果沒有get變數，顯示首頁
-				// 首頁標籤頁接下來會用DreamWeaver做，不需要php，html就好
-				if(!$_GET)
-				{
-					include "frame.html";
-				}
-				// 管理員首頁只有一句話，不需要再另開一個檔案，直接echo就好
-				elseif($_GET["do"] == "admin")
-				{
-					echo "請選擇管理項目";
-				}
-				// 如果GET變數是login，顯示登入login.php
-				// logout之後打在auth.php
-				else
-				{
-					include $_GET["do"].".php";
-				}
+// 如果沒有get變數，顯示首頁
+// 首頁標籤頁接下來會用DreamWeaver做，不需要php，html就好
+if (!$_GET) {
+    include "frame.html";
+}
+// 管理員首頁只有一句話，不需要再另開一個檔案，直接echo就好
+elseif ($_GET["do"] == "admin") {
+    echo "請選擇管理項目"; //**************** */
+}
+elseif ($_GET["do"] == "apo") {
+    echo ""; //**************** */
+}
+elseif ($_GET["do"] == "aknow") {
+    echo ""; //**************** */
+}
+// 如果GET變數是login，顯示登入login.php
+// logout之後打在auth.php
+else {
+    include $_GET["do"] . ".php";
+}
 
-			?>
+?>
 		</div>
                 </div>
             </div>

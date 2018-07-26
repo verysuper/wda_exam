@@ -3,6 +3,7 @@ $sql = "select * from admin_member";
 $ro = mysqli_query($link,$sql);
 $rr = mysqli_fetch_assoc($ro);
 ?>
+<input type="button" value="返回" onclick = "document.location.href='/'"><br>
 <table width="95%" border="1" align="center" cellpadding="3" cellspacing="0">
   <tr>
     <td colspan="3" align="center" valign="middle"><a href="admin.php?do=admin&redo=aa">新增管理員</a></td>
@@ -20,7 +21,7 @@ $rr = mysqli_fetch_assoc($ro);
 <?php if($rr["a_m_id"] == "admin"){?>
 此帳號為最高權限
 <?php }else{?>
-      <a href="admin.php?do=admin&redo=aa">修改</a>
+      <a href="admin.php?do=admin&redo=admin_update&no=<?=$rr["a_m_seq"]?>">修改</a>
       <a href="del_api.php?del=admin_member&goto=admin&no=<?=$rr["a_m_seq"]?>">刪除</a>
 <?php }?>
     </td>
