@@ -6,11 +6,11 @@ body
 }
 #main
 {
-	width:1024px;
-	height:768px;
+	width:1034px;
 	padding:10px;
-	border: #000 solid 1px;
-	margin: 0px auto;
+	margin:20px auto 20px auto;
+	border:#000 solid 1px;
+	min-height:768px;
 }
 #top a
 {
@@ -19,10 +19,9 @@ body
 }
 #left
 {
-	float: left;
-	/* display:inline-block; */
+	display:inline-block;
 	width:20%;
-	/* padding:2%; */
+	padding:2%;
 	min-height:550px;
 	vertical-align:top;
 	border:#000 1px solid;
@@ -42,16 +41,14 @@ body
 }
 #right
 {
-	/* display:inline-block; */
-	float: right;
-	width:75%;
-	/* padding:2%; */
+	display:inline-block;
+	width:65%;
+	padding:2%;
 	min-height:550px;
 	border:#000 1px solid;
 }
 #bottom
 {
-	clear: both;
 	height:70px;
 	background:url(icon/bot.png);
 	background-size:cover;
