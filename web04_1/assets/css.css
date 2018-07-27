@@ -8,8 +8,8 @@ body
 {
 	width:1024px;
 	height:768px;
-	/*padding:10px;
-	border: #000 solid 1px;*/
+	padding:10px;
+	border: #000 solid 1px;
 	margin: 0px auto;
 }
 #top a
@@ -19,9 +19,10 @@ body
 }
 #left
 {
-	display:inline-block;
+	float: left;
+	/* display:inline-block; */
 	width:20%;
-	padding:2%;
+	/* padding:2%; */
 	min-height:550px;
 	vertical-align:top;
 	border:#000 1px solid;
@@ -38,19 +39,19 @@ body
 .ct
 {
 	text-align:center;
-	margin:0px 10px;
 }
 #right
 {
-	display:inline-block;
-	width:65%;
-	padding:2%;
+	/* display:inline-block; */
+	float: right;
+	width:75%;
+	/* padding:2%; */
 	min-height:550px;
 	border:#000 1px solid;
-	margin:0px 10px;
 }
 #bottom
 {
+	clear: both;
 	height:70px;
 	background:url(icon/bot.png);
 	background-size:cover;
