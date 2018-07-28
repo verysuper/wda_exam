@@ -6,7 +6,7 @@
         }else{
                 $gate="<a href='logout.php'>登出</a>";
         }
-        
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
@@ -14,6 +14,7 @@
 
 <title>┌精品電子商務網站」</title>
 <link href="./assets/css.css" rel="stylesheet" type="text/css">
+<script src="./assets/jquery-1.9.1.min.js"></script>
 <script src="./assets/js.js"></script>
 </head>
 
@@ -23,7 +24,7 @@
     	<div id="top">
         	
                         <div>
-                <a href="?"><img src="./assets/0416.jpg" width='268'></a>
+                <a href="?"><img src="./assets/0416.jpg" height='90'></a>
                 <a href="?">回首頁</a> |
                 <a href="?do=news">最新消息</a> |
                 <a href="?do=look">購物流程</a> |

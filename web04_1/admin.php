@@ -3,8 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>┌精品電子商務網站」</title>
-<link href="./Manage Page_files/css.css" rel="stylesheet" type="text/css">
-<script src="./Manage Page_files/js.js"></script>
+<link href="./assets/css.css" rel="stylesheet" type="text/css">
+<script src="./assets/jquery-1.9.1.min.js"></script>
+<script src="./assets/js.js"></script>
 </head>
 
 <body>
@@ -12,9 +13,9 @@
 	<div id="main">
     	<div id="top">
         	<a href="?">
-            	<img src="./Manage Page_files/0416.jpg">
+            	<img src="./assets/0416.jpg"  height='90'>
             </a>
-                            <img src="./Manage Page_files/0417.jpg">
+                            <img src="./assets/0417.jpg" height='90'>
                    </div>
         <div id="left" class="ct">
         	<div style="min-height:400px;">

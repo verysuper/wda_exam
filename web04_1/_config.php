@@ -10,5 +10,5 @@
   session_start();
   $result=$conn->query("select * from footer");
   $footer=$result->fetch(PDO::FETCH_ASSOC)['footer'];
-  echo $footer;
+  //echo $footer;
 ?>

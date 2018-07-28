@@ -55,6 +55,8 @@ body
 	height:70px;
 	background:url(icon/bot.png);
 	background-size:cover;
+	position: fixed;
+	bottom: 0;
 }
 .al
 {
