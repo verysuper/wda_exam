@@ -1,1 +1,1 @@
-adminlogin
+loginAdmin

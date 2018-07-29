@@ -1,10 +1,10 @@
 <?php
         include_once '_config.php';
         
-        if(isset($_SESSION['user'])){
-                $gate="<a href='?do=login'>會員登入</a>";
+        if(!isset($_SESSION['user'])){
+                $gate="<a href='?do=userLogin'>會員登入</a>";
         }else{
-                $gate="<a href='logout.php'>登出</a>";
+                $gate="<a href='?do=logout'>登出</a>";
         }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -28,8 +28,8 @@
                 <a href="?do=news">最新消息</a> |
                 <a href="?do=look">購物流程</a> |
                 <a href="?do=buycart">購物車</a> |
-                                <a href="?do=login">會員登入</a> |
-                                <a href="?do=adminlogin">管理登入</a>
+                                <?=$gate?> |
+                                <a href="?do=adminLogin">管理登入</a>
            </div>
                 </div>
         <div id="left" class="ct">
