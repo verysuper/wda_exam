@@ -31,5 +31,10 @@
       <img src="assets/0402.jpg"  onclick="lof('?do=buycart&i=<?=$row["id"]?>')">
     </td>
   </tr>
+    <tr>
+    <td colspan="2" align='center'>
+      <input type="button" value="返回" onclick='history.go(-1);'>
+    </td>
+  </tr>
 </table>
 
