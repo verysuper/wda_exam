@@ -4,12 +4,12 @@
         if(!isset($_SESSION['user'])){
                 $gateUser="<a href='?do=userLogin'>會員登入</a>";
         }else{
-                $gateUser="<a href='?do=logout&type=user'>登出</a>";
+                $gateUser="<a href='?do=userlogout'>登出</a>";
         }
         if (!isset($_SESSION['admin'])) {
                 $gateAdmin = "<a href='?do=adminLogin'>管理登入</a>";
         } else {
-                $gateAdmin = "<a href='?do=logout&type=admin'>管理登出</a>";
+                $gateAdmin = "<a href='admin.php?redo=list'>後台管理</a>";
         }
 
 ?>
@@ -77,14 +77,14 @@
         <?php
 		// c是顯示的商品分類，i是商品id (點商品圖片要顯示商品詳細資料)
                 if(empty($_GET) || !empty($_GET["c1"]))// || !empty($_GET["i"])) TTTTTMMMMMMMMMMDDDDDDDDDD
-                	include "item_list.php";
+                	include_once "item_list.php";
 		elseif(!empty($_GET["do"]))
 		{
 			// look是購物流程說明，只有一張圖，直接echo就好
                         if($_GET["do"] == "look")	
                                 echo "<img src='assets/0401.jpg'>";
                         else	
-                                include $_GET["do"].".php";
+                                include_once $_GET["do"].".php";
 		}
 	?>
         	        </div>

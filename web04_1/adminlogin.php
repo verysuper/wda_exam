@@ -6,7 +6,7 @@
         // echo $result;
         if($result>0){
           $_SESSION['admin']=$_POST['acc_admin'];
-          ?><script>document.location.href='admin.php'</script><?php
+          ?><script>document.location.href='admin.php?redo=list'</script><?php
         }else{
           ?><script>alert('對不起，您輸入的帳號密碼有誤請您重新登入');</script><?php
         }

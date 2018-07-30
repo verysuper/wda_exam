@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-07-29 18:01:26
+-- 產生時間： 2018-07-30 19:01:15
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 5.6.36
 
@@ -32,8 +32,22 @@ CREATE TABLE `admin` (
   `id` int(11) UNSIGNED NOT NULL,
   `acc` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `pw` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `permit` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `permit` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `admin`
+--
+
+INSERT INTO `admin` (`id`, `acc`, `pw`, `permit`, `type`) VALUES
+(1, 'admin', '1234', '11111', '999'),
+(2, 'aaa', 'aaa', '00001', '1'),
+(3, 'ccc', 'ccc', '00111', '1'),
+(4, 'bbb', 'bbb', '11111', '1'),
+(5, 'qqq', 'qqq', '00111', '1'),
+(6, 'www', 'www', '11111', '1'),
+(7, 'zzz', 'zzz', '00111', '1');
 
 -- --------------------------------------------------------
 
@@ -203,7 +217,7 @@ ALTER TABLE `user`
 -- 使用資料表 AUTO_INCREMENT `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 使用資料表 AUTO_INCREMENT `p_cat`
