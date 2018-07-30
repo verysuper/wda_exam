@@ -12,7 +12,7 @@
 <iframe name="back" style="display:none;"></iframe>
 	<div id="main">
     	<div id="top">
-        	<a href="?">
+        	<a href="index1.php">
             	<img src="./assets/0416.jpg"  height='90'>
             </a>
                             <img src="./assets/0417.jpg" height='90'>

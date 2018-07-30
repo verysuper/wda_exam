@@ -3,6 +3,7 @@
     $sql="select * from p_item where id='{$_GET['i']}'";
     $row=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
   }
+  echo time('now');
 ?>
 
 <table width="100%" border="0">
