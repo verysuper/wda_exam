@@ -24,9 +24,13 @@
     <td align="center"><?=$row['acc']?></td>
     <td align="center">****</td>
     <td align="center">
-      <input type="button" onclick="document.location.href='?redo=root&ga=update'" value="修改" /><!-- ga:get action -->
-      <input type="button" onclick="document.location.href='?redo=root&ga=delete'" value="刪除" /><!-- ga:get action -->
+      <input type="button" onclick="document.location.href='?redo=root&ga=update&acc=<?=$row['acc']?>'" value="修改" /><!-- ga:get action -->
+      <input type="button" onclick="document.location.href='?redo=root&ga=delete&acc=<?=$row['acc']?>'" value="刪除" /><!-- ga:get action -->
     </td>
   </tr>
   <?php }?>
+  <tr>
+    <td><input type="button" value="返回" onclick="document.location.href='index1.php'"></td>
+  </tr>
 </table>
+

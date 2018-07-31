@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-07-30 19:01:15
+-- 產生時間： 2018-07-31 10:39:06
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 5.6.36
 
@@ -42,12 +42,8 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `acc`, `pw`, `permit`, `type`) VALUES
 (1, 'admin', '1234', '11111', '999'),
-(2, 'aaa', 'aaa', '00001', '1'),
-(3, 'ccc', 'ccc', '00111', '1'),
-(4, 'bbb', 'bbb', '11111', '1'),
-(5, 'qqq', 'qqq', '00111', '1'),
-(6, 'www', 'www', '11111', '1'),
-(7, 'zzz', 'zzz', '00111', '1');
+(9, 'aaa', 'aaa', '10111', '1'),
+(11, 'bbb', 'bbb', '00001', '1');
 
 -- --------------------------------------------------------
 
@@ -64,7 +60,7 @@ CREATE TABLE `footer` (
 --
 
 INSERT INTO `footer` (`footer`) VALUES
-('1111');
+('1111rty');
 
 -- --------------------------------------------------------
 
@@ -217,7 +213,7 @@ ALTER TABLE `user`
 -- 使用資料表 AUTO_INCREMENT `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- 使用資料表 AUTO_INCREMENT `p_cat`

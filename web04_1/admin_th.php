@@ -1,1 +1,0 @@
-admin_th.php

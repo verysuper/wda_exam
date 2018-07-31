@@ -10,6 +10,7 @@ if(!empty($_GET["do"])){$m = $_GET["do"];}
 <title>┌精品電子商務網站」</title>
 <link href="./home_files/css.css" rel="stylesheet" type="text/css">
 <script src="./home_files/js.js"></script>
+<script src="./js/jquery-1.9.1.min.js"></script>
 </head>
 
 <body>
