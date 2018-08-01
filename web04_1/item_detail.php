@@ -15,7 +15,7 @@
     <td  class="pp ct">分類:<?php echo $cat[$row['c1']-1]['name'].">".$cat[$row['c2']-1]['name']?></td><!-- mapping index 的 cat array -->
   </tr>
   <tr>
-    <td class="pp ct">編號:107070<?=$row['id']?></td><!-- 隨便 -->
+    <td class="pp ct">編號:<?=$row['no']?></td><!-- 隨便 -->
   </tr>
   <tr>
     <td class="pp ct">價格:<?=$row['price']?></td>

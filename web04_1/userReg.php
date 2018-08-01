@@ -64,7 +64,7 @@
       return;
     }
     if(userAcc.toLowerCase()!='admin'){
-      $.post('userAccCheck_api.php',{userAcc},function(result){
+      $.post('api.php',{to:'userAccCheck', userAcc},function(result){
         if(result<1){
           alert('帳號可以使用');
         }else{
