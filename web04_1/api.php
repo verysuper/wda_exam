@@ -23,4 +23,26 @@
       ?><option value="<?=$row['id']?>"><?=$row['name']?></option><?php
     }    
   }
+  //進入購物車用 ********** 不能按太多次 session 會掛掉
+  if(isset($_POST['to']) && $_POST['to']=='check_login'){
+      $_SESSION["itemid"][] =$_POST["itemid"];
+      $_SESSION["buy_qty"][] =$_POST["buy_qty"];
+    if(empty($_SESSION["user"])){
+      header("location:index1.php?do=userLogin");
+    }else{
+      header("location:index1.php?do=buycart");
+    }
+  }
+  //remove cart array index ********** 不能按太多次 session 會掛掉
+  if(isset($_GET['remove'])){
+    $index=$_GET['remove'];
+    $_SESSION["itemid"][$index]=null;
+    $_SESSION["buy_qty"][$index]=null;
+    header("location:index1.php?do=buycart");
+  }
+  if(isset($_GET['buycheckout'])){
+    $items = $_SESSION["itemid"];
+    print_r($items);//______________
+    exit();//______________
+  }
 ?>

@@ -29,8 +29,14 @@
   <tr>
     <td class="pp ct">
       價錢:<?=$row["price"]?>
-      <span style="float:right">
-        <img src="assets/0402.jpg" onclick="lof('?do=buycart&i=<?=$row["id"]?>&qt=1')">
+      <span style="float:right">        
+      <form action="api.php" method="post"><!--note:購物車偵測登入狀態，當點選購物車時，進入購物車的管理頁面，此頁面需偵測是否處於登入狀態
+	如果未登入的話則跳頁到會員登入頁面，會員登入成功時把剛購買的資料新增購物車	如果有登入的話則新增資料到購物車-->
+        <input type="hidden" name="buy_qty" value="1"/>
+        <input type="hidden" name="itemid" value="<?=$row['id']?>">
+        <input type="submit" name="to" value="check_login"
+         style="width:60px;height:20px;background-image:url(assets/0402.jpg);border-style: none;">
+      </form>
       </span>
     </td>
   </tr>

@@ -3,7 +3,6 @@
     $sql="select * from p_item where id='{$_GET['i']}'";
     $row=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
   }
-  echo time('now');
 ?>
 
 <table width="100%" border="0">
@@ -28,8 +27,16 @@
   </tr>
   <tr>
     <td colspan="2"  class="tt ct">
-      購買數量:<input type="text" />
-      <img src="assets/0402.jpg"  onclick="lof('?do=buycart&i=<?=$row["id"]?>')">
+      <!-- 購買數量:<input type="text" />
+      <img src="assets/0402.jpg"  onclick="lof('?do=buycart&i=<?=$row["id"]?>')"> -->
+      <form action="api.php" method="post"><!--note:購物車偵測登入狀態，當點選購物車時，進入購物車的管理頁面，此頁面需偵測是否處於登入狀態
+	如果未登入的話則跳頁到會員登入頁面，會員登入成功時把剛購買的資料新增購物車	如果有登入的話則新增資料到購物車-->
+        購買數量:
+        <input type="text" name="buy_qty" value="1"/>
+        <input type="hidden" name="itemid" value="<?=$row['id']?>">
+        <input type="submit" name="to" value="check_login"
+         style="width:60px;height:20px;background-image:url(assets/0402.jpg);border-style: none;">
+      </form>
     </td>
   </tr>
     <tr>

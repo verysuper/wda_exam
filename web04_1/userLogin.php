@@ -6,7 +6,7 @@
       $result=$conn->query($sql)->rowCount();
       if($result>0){
         $_SESSION['user']=$_POST['acc_user'];
-        ?><script>document.location.href='?'</script><?php
+        ?><script>document.location.href='?do=buycart'</script><?php //登入成功
       }else{
         ?><script>alert('對不起，您輸入的帳號密碼有誤請您重新登入');</script><?php
       }
