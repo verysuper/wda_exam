@@ -1,6 +1,11 @@
 <?php
         include_once '_config.php';
+        include_once '_cart.php';
         
+        $cart =& $_SESSION['wfcart'];        
+        if (!is_object($cart)) {
+                $cart = new wfCart();
+        }
         if(!isset($_SESSION['user'])){
                 $gateUser="<a href='?do=userLogin'>會員登入</a>";
         }else{
@@ -38,7 +43,7 @@
                                 <?=$gateAdmin?>
            </div>
                 </div>
-        <div id="left" class="ct">
+        <div id="left" class="ct"  style="overflow:auto; height:500px;">
         	<div style="min-height:400px;">
                         <!-- menu -->
 <?php

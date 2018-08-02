@@ -30,7 +30,7 @@
     <td class="pp ct">
       價錢:<?=$row["price"]?>
       <span style="float:right">
-        <img src="assets/0402.jpg" onclick="lof('?do=buycart&i=<?=$row["id"]?>')">
+        <img src="assets/0402.jpg" onclick="lof('?do=buycart&i=<?=$row["id"]?>&qt=1')">
       </span>
     </td>
   </tr>

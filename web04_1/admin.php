@@ -36,7 +36,7 @@
 												<?php if($menu[1]==1){?><a href="?do=admin&redo=order">訂單管理</a><?php }?>
 												<?php if($menu[2]==1){?><a href="?do=admin&redo=mem">會員管理</a><?php }?>
 												<?php if($menu[3]==1){?><a href="?do=admin&redo=bot">頁尾版權管理</a><?php }?>
-												<?php if($menu[4]==1){?><a href="?do=admin&redo=news">最新消息管理</a><?php }?>
+												<?php if($menu[4]==1){?><a href="?do=admin&redo=news1">最新消息管理</a><?php }?>
             	        	<a href="?do=admin&redo=logout" style="color:#f00;">登出</a>
                     </div>
                     </div>

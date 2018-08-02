@@ -13,11 +13,11 @@
     }else{
       $c2=$_POST['c2'];
     }
-    if(isset($_FILES['pic'])){
+    if(!empty($_FILES['pic']['name'])){ //upload 判斷必須是 $_FILES['xxxx']['name'] 2
       $pic_name = time('now') . "." . end(explode(".", $_FILES['pic']['name']));//圖片名稱+副檔名<-使用time('now')防重複
       copy($_FILES['pic']['tmp_name'],'assets/'.$pic_name);
     }else{
-      $pic_name=$_POST['file'];
+      $pic_name=$_POST['oldfile'];
     }
     $sql="update p_item set c1='{$c1}',c2='{$c2}',name='{$_POST['name']}',
      type='{$_POST['type']}',qt='{$_POST['qt']}',price='{$_POST['price']}',
@@ -30,6 +30,7 @@
     $item=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
     $result=$conn->query("select * from p_cat");
     $cat=$result->fetchAll();
+    echo $item['img'];
   }
 ?>
 
@@ -97,7 +98,7 @@
 <input type="hidden" name="id" value="<?=$item['id']?>"><!--補原資料-->
 <input type="hidden" name="c1" value="<?=$item['c1']?>"><!--補原資料-->
 <input type="hidden" name="c2" value="<?=$item['c2']?>"><!--補原資料-->
-<input type="hidden" name="file" value="<?=$item['img']?>"><!--補原資料-->
+<input type="hidden" name="oldfile" value="<?=$item['img']?>"><!--補原資料-->
 </form>
 <script>
   function dropDownList_api(){
