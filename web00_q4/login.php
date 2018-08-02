@@ -4,8 +4,10 @@ if(!empty($_POST["my_id"])){
     $sql = "select * from account where a_id = '".$_POST["my_id"]."' and a_pw = '".$_POST["my_pw"]."'";
     $rr =mysqli_query($link,$sql);
     $login = mysqli_num_rows($rr);
+    $login_seq = mysqli_fetch_assoc($rr);
     if($login == 1){
       $_SESSION["mem"] = $_POST["my_id"];
+      $_SESSION["memseq"] = $login_seq["a_seq"];
       ?><script>document.location.href="/"</script><?php
     }
   }else{
@@ -18,7 +20,8 @@ $r3 = $r1 + $r2;
 $_SESSION["a3"] = $r3;
 ?>
 第一次購物<br>
-<input type="button" value="按我註冊" onclick = "document.location.href='/?do=add_account'"><br>
+<a href="/?do=add_account"><img src="images/0413.jpg"></a>
+<br>
 會員登入<br>
 <form method="post" name="ccc">
 <table width="95%" border="1" align="center" cellpadding="3" cellspacing="0">

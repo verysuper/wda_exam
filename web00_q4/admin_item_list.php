@@ -3,7 +3,7 @@ $sql = "select * from item_3";
 $ro2 = mysqli_query($link,$sql);
 $list_i1_2 = mysqli_fetch_assoc($ro2);
 ?>
-<table width="95%" border="0" align="center" cellpadding="3" cellspacing="0">
+<table width="95%" border="1" align="center" cellpadding="3" cellspacing="0">
   <tr>
     <td colspan="5" align="center" valign="middle">商品管理　　<A href="admin.php?do=admin&redo=th">商品分類</A></td>
   </tr>
@@ -29,7 +29,12 @@ do{
     <td align="left" valign="middle"><?=$list_i1_2["i3_name"]?></td>
     <td align="center" valign="middle"><?=$list_i1_2["i3_cnt"]?></td>
     <td align="center" valign="middle"><?=$look?></td>
-    <td align="center" valign="middle"></td>
+    <td align="center" valign="middle">
+      <a href="admin.php?do=admin&redo=update_item&no=<?=$list_i1_2["i3_seq"]?>">修改</a>
+      <a href="item_list_del_api.php?no=<?=$list_i1_2["i3_seq"]?>">刪除</a><br>
+      <a href="item_list_up_api.php?no=<?=$list_i1_2["i3_seq"]?>">上架</a>
+      <a href="item_list_down_api.php?no=<?=$list_i1_2["i3_seq"]?>">下架</a>
+    </td>
   </tr>
 <?php }while($list_i1_2 = mysqli_fetch_assoc($ro2));?>
 </table>

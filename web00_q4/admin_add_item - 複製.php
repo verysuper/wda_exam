@@ -14,8 +14,8 @@ if(!empty($_POST["select_i1"])){
   $sql="insert into item_3 value( null,'$i3_name','$i3_sell','$i3_type','$i3_cnt','$i3_pic','$i3_con','$i3_i1','$i3_i2','0')";
   mysqli_query($link,$sql);
   copy($_FILES["i3_pic"]["tmp_name"],"images/item/".$i3_pic);
-}
 
+}
 ?>
 <form method="post" enctype="multipart/form-data">
 <table width="95%" border="1" align="center" cellpadding="3" cellspacing="0">
@@ -25,10 +25,10 @@ if(!empty($_POST["select_i1"])){
   <tr>
     <td width="300" align="center">所屬大類</td>
     <td align="left">
-            <select name="select_i1" id="select_i1" onchange="gg()">
+            <select name="select_i1" id="select_i1" onchange="read_big_type()">
               <option>請選擇大類</option>
 <?php do{?>
-              <option value="<?=$list_i1["i1_seq"]?>" <?php if( (!empty($_GET["dala"])) && ($_GET["dala"] == $list_i1["i1_seq"])){ echo "selected='selected'" ;}?>><?=$list_i1["i1_name"]?></option>
+              <option value="<?=$list_i1["i1_seq"]?>"><?=$list_i1["i1_name"]?></option>
 <?php }while($list_i1 = mysqli_fetch_assoc($ro));?>
             </select>
     </td>
@@ -36,21 +36,7 @@ if(!empty($_POST["select_i1"])){
   <tr>
     <td align="center">所屬中類</td>
     <td align="left">
-<?php
-
-if(!empty($_GET["dala"])){
-  $sql = "select * from item_2 where i2_i1 ='".$_GET["dala"]."'";
-  $ro0 = mysqli_query($link,$sql);
-  $list_i1l = mysqli_fetch_assoc($ro0);
-?>
-            <select name="select_i7" onchange="read_big_type()">
-<?php do{?>
-              <option value="<?=$list_i1l["i2_seq"]?>"><?=$list_i1l["i2_name"]?></option>
-<?php }while($list_i1l = mysqli_fetch_assoc($ro0));?>
-            </select>
-<?php
-}
-?>
+<div id="i2"></div>
     </td>
   </tr>
   <tr>
@@ -103,9 +89,5 @@ function read_big_type(){
   $.post("add_item_list_api.php",{tb},function(jola){
     document.getElementById("i2").innerHTML = jola;
   });
-}
-function gg(){
-  var tb = document.getElementById("select_i1").value;
-  document.location.href="admin.php?do=admin&redo=add_item&dala="+tb;
 }
 </script>
