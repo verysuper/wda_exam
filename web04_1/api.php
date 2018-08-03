@@ -42,11 +42,13 @@
   }
   if(isset($_GET['buycheckout'])){
     $user=$_SESSION['user'];
-    $items = $_SESSION["itemid"];
-    $buy_qty=$_SESSION["buy_qty"];
-    for($i=0;$i<count($items);$i++){
-      if(!empty($items[$i])){
-        // echo $items[$i]."<br>";
+    for($i=0;$i<count($_SESSION["itemid"]);$i++){
+      if(!empty($_SESSION["itemid"][$i])){
+        $id = $_SESSION["itemid"][$i];
+        $buyqt = $_SESSION["buy_qty"][$i];
+        $sql="select * from p_item where id='{$id}'";
+        $item=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
+        $total=$item['price']*$buyqt;//小計
         
       }
     }
