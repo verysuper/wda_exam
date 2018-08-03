@@ -41,8 +41,15 @@
     header("location:index1.php?do=buycart");
   }
   if(isset($_GET['buycheckout'])){
+    $user=$_SESSION['user'];
     $items = $_SESSION["itemid"];
-    print_r($items);//______________
-    exit();//______________
+    $buy_qty=$_SESSION["buy_qty"];
+    for($i=0;$i<count($items);$i++){
+      if(!empty($items[$i])){
+        // echo $items[$i]."<br>";
+        
+      }
+    }
+    // exit();//______________
   }
 ?>
