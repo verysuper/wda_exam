@@ -29,8 +29,8 @@
     </td>
   </tr>
   <?php }?>
-  <tr>
-    <td><input type="button" value="返回" onclick="document.location.href='index1.php'"></td>
+  <tr class="ct">
+    <td colspan="3"><input type="button" value="返回" onclick="document.location.href='index1.php'"></td>
   </tr>
 </table>
 

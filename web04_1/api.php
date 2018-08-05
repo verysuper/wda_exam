@@ -36,22 +36,38 @@
   //remove cart array index ********** 不能按太多次 session 會掛掉
   if(isset($_GET['remove'])){
     $index=$_GET['remove'];
-    $_SESSION["itemid"][$index]=null;
-    $_SESSION["buy_qty"][$index]=null;
+    array_splice($_SESSION["itemid"],$index,1);
+    array_splice($_SESSION["buy_qty"],$index,1);
     header("location:index1.php?do=buycart");
   }
-  if(isset($_GET['buycheckout'])){
-    $user=$_SESSION['user'];
-    for($i=0;$i<count($_SESSION["itemid"]);$i++){
-      if(!empty($_SESSION["itemid"][$i])){
-        $id = $_SESSION["itemid"][$i];
-        $buyqt = $_SESSION["buy_qty"][$i];
-        $sql="select * from p_item where id='{$id}'";
-        $item=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
-        $total=$item['price']*$buyqt;//小計
-        
+  if(isset($_POST['buycheckout']) && $_POST['buycheckout']=='確定送出'){
+    foreach($_POST as $key => $value){    
+      $$key = $value;      
+    }
+    $created=time();//created
+    $o_no=date('YmdHis',$created);
+    $o_date=date('Y/m/d',$created);
+    $str="";
+    //$total=0;
+    for($i=0;$i<count($_SESSION['itemid']);$i++){
+      if(!empty($_SESSION['itemid'])){
+        $itemid=$_SESSION['itemid'][$i];
+        $buy_qty=$_SESSION['buy_qty'][$i];
+        $sql="select * from p_item where id='{$itemid}'";//迴圈做查詢資料庫 非常可能發生lag
+        $row=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
+        $sub_total=$row['price']*$buy_qty;
+        // $total=$total+$sub_total;
+        $str .="insert into p_order values(
+          null,'{$o_no}','{$o_date}','{$acc}',
+          '{$name}','{$mail}','{$address}','{$tel}',
+          '{$row['name']}','{$row['no']}','{$buy_qty}',
+          '{$row['price']}','{$sub_total}','{$total}','{$created}');";        
       }
     }
-    // exit();//______________
+    $conn->query($str);
+    unset($_SESSION["itemid"]);
+    unset($_SESSION["buy_qty"]);
+    // header("location:index1.php");
+    ?><script>document.location.href='index1.php';alert('訂購成功,感謝您的選購');</script><?php
   }
 ?>

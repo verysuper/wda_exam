@@ -7,7 +7,7 @@
     $result=$conn->query("select * from p_item where c1={$c1}");
   }else{
     $title .= "全部商品";
-    $result=$conn->query("select * from p_item");
+    $result=$conn->query("select * from p_item where sell=1");
   }
   if(isset($_GET['c2'])){
     $c2=$_GET['c2'];
