@@ -40,7 +40,7 @@
             	        	<a href="?do=admin&redo=admin_logout" style="color:#f00;">登出</a>
                     </div>
                     </div>
-        <div id="right">
+        <div id="right" style="overflow:auto; height:500px;"><!--修改過-->
 					<?php
 						if(!empty($_GET['redo'])){
 							include_once $_GET['redo'].'.php';

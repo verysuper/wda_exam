@@ -10,4 +10,12 @@
       $conn->query($sql);
     }
   }
+  if($_POST['do']=='dropdown_api'){
+    $sql="select * from p_cat where parent='{$_POST['parent']}'";
+    $result=$conn->query($sql);
+    ?><option value="">請先選擇大項</option><?php
+    while($row=$result->fetch(PDO::FETCH_ASSOC)){
+      ?><option value="<?=$row['id']?>"><?=$row['name']?></option><?php
+    }
+  }
 ?>
