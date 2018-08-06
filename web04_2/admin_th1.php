@@ -24,12 +24,51 @@
       <input type="submit" value="新增">
     </td>
   </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
+  <?php
+    $sql="select * from p_cat";
+    $catAll=$conn->query($sql)->fetchAll();
+    // print_r($catAll);
+    for($i=0;$i<count($catAll);$i++){
+      if($catAll[$i]['parent']==0){
+?>
+        <tr class="tt">
+          <td><?=$catAll[$i]['name']?></td>
+          <td class="ct">
+            <input type="button" value="修改" onclick="cat_api('<?=$catAll[$i]['id']?>','1')">
+            <input type="button" value="刪除" onclick="cat_api('<?=$catAll[$i]['id']?>','2')">
+          </td>
+        </tr>
+          <?php
+            for($j=0;$j<count($catAll);$j++){
+              if($catAll[$i]['id']==$catAll[$j]['parent']){
+                ?>
+                  <tr class="pp">
+                    <td><?=$catAll[$j]['name']?></td>
+                    <td class="ct">
+                      <input type="button" value="修改" onclick="cat_api('<?=$catAll[$j]['id']?>','1')">
+                      <input type="button" value="刪除" onclick="cat_api('<?=$catAll[$j]['id']?>','2')">
+                    </td>
+                  </tr>
+                <?php
+              }
+            }
+      }
+    }
+  ?>
 </table>
+<script>
+  function cat_api(id,action){
+    if(action==1){
+      if(name=prompt()){
+        $.post('api.php',{'to':'categore','id':id,name,action},function(aa){
+          document.location.href='admin.php?redo=admin_th1';
+        });
+      }
+    }
+    if(action==2){
+        $.post('api.php',{'to':'categore',id,action},function(aa){
+          document.location.href='admin.php?redo=admin_th1';
+        });
+    }
+  }
+</script>

@@ -84,7 +84,8 @@
 function categore_api(id,action){
   if(action==1){
     if(name=prompt()){
-      $.post('api.php',{to:'categore_api',id,name,action},function(callback){
+      $.post('api.php',{'to':'categore_api',id,name,action},function(callback){
+        //alert(callback);
         document.location.href='admin.php?do=admin&redo=th1';
       });
     }

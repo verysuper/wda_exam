@@ -16,7 +16,7 @@
 
 <title>┌精品電子商務網站」</title>
 <link href="./assets/css.css" rel="stylesheet" type="text/css">
-<script>"./assets/jquery-1.9.1.min.js"</script>
+<script src="./assets/jquery-1.9.1.min.js"></script>
 <script src="./assets/js.js"></script>
 </head>
 

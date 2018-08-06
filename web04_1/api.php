@@ -9,6 +9,7 @@
     if($_POST['action']==1){
       $sql="update p_cat set name='{$_POST['name']}' where id='{$_POST['id']}'";
       $conn->query($sql);
+      //echo '123';
     }
     if($_POST['action']==2){
       $sql="delete from p_cat where id='{$_POST['id']}'";
