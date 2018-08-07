@@ -9,6 +9,8 @@ $kfc["th"]="admin_item_type_list.php";
 $kfc["admin_item"]="admin_item_list.php";
 $kfc["add_item"]="admin_add_item.php";
 $kfc["update_item"]="admin_update_item.php";
+$kfc["order"]="admin_billing_list.php";
+$kfc["order_1"]="admin_billing_list_1.php";
 
 $web_list["admin"]="admin_login.php";
 $web_list["login"]="login.php";
@@ -20,5 +22,6 @@ $web_list["main"]="index_main_item_list.php";
 $web_list["look_item"]="item_look.php";
 $web_list["buycart"]="buycart.php";
 $web_list["billing"]="billing.php";
+
   
 ?>

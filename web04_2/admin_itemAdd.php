@@ -1,5 +1,15 @@
 <?php
-  
+  if(isset($_POST['admin_itemAdd'])){
+    foreach($_POST as $key => $value){
+      $$key = $value;
+    }
+    $pic=$no.".".explode('.',$_FILES['pic']['name'])[1];
+    if(copy($_FILES['pic']['tmp_name'],$pic)){
+      $sql="insert into p_item value(null,'{$cat1}','{$cat2}','{$no}','{$name}','{$type}','{$qt}','{$price}','{$pic}','{$info}','0')";
+      $conn->query($sql);
+      echo $sql;
+    }
+  }
 ?>
 <form action="" method="post" enctype="multipart/form-data">
 <table width="80%" border="0" align="center">
@@ -51,10 +61,10 @@
   </tr>
   <tr>
     <td class="tt ct">商品介紹</td>
-    <td class="pp"><textarea name="textarea" required cols="45" rows="5"></textarea></td>
+    <td class="pp"><textarea name="info" required cols="45" rows="5"></textarea></td>
   </tr>
   <tr class="ct">
-    <td colspan="2"><input type="submit" name="button" id="button" value="送出" />
+    <td colspan="2"><input type="submit" name="admin_itemAdd" id="button" value="送出" />
       <input type="reset" name="button2" id="button2" value="重設" />
       <input type="button" name="button3" id="button3" value="返回" /></td>
     </tr>
@@ -70,3 +80,4 @@ function dropdown_api(){
     });
   }
 </script>
+

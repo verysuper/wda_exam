@@ -33,7 +33,7 @@
     <td><?=$row['qt']?></td>
     <td><?=$row['sell']?></td>
     <td>
-      <input type="submit" name="button2" id="button2" value="修改" />
+      <a href="?redo=admin_itemEdit&id=<?=$row['id']?>"><input type="button" value="修改" /></a>
       <input type="submit" name="button3" id="button3" value="刪除" /><br>
       <input type="submit" name="button4" id="button4" value="上架" />
       <input type="submit" name="button5" id="button5" value="下架" />
