@@ -1,5 +1,4 @@
 <?php include_once("head.php")?>
-
   <div id="mm">
     <div class="half" style="vertical-align:top;">
       <h1>預告片介紹</h1>
