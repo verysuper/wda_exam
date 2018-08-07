@@ -1,3 +1,17 @@
+<?php
+  if(isset($_POST['itemDel'])){
+    $sql="delete from p_item where id='{$_POST['id']}'";
+    $conn->query($sql);
+  }
+  if(isset($_POST['itemOn'])){
+    $sql="update p_item set sell=1 where id='{$_POST['id']}'";
+    $conn->query($sql);
+  }
+  if(isset($_POST['itemOff'])){
+    $sql="update p_item set sell=0 where id='{$_POST['id']}'";
+    $conn->query($sql);
+  }
+?>
 <table width="80%" border="0" align="center">
   <tr>
     <td colspan="5">商品管理 | <a href="?redo=admin_th1">商品分類</a></td>
@@ -34,9 +48,10 @@
     <td><?=$row['sell']?></td>
     <td>
       <a href="?redo=admin_itemEdit&id=<?=$row['id']?>"><input type="button" value="修改" /></a>
-      <input type="submit" name="button3" id="button3" value="刪除" /><br>
-      <input type="submit" name="button4" id="button4" value="上架" />
-      <input type="submit" name="button5" id="button5" value="下架" />
+      <input type="submit" name="itemDel" id="button3" value="刪除" /><br>
+      <input type="submit" name="itemOn" id="button4" value="上架" />
+      <input type="submit" name="itemOff" id="button5" value="下架" />
+      <input type="hidden" name="id" value="<?=$row['id']?>">
     </td>
   </tr></form>
 <?php

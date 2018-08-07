@@ -13,7 +13,7 @@
     }else{
       $c2=$_POST['c2'];
     }
-    if(!empty($_FILES['pic']['name'])){ //upload 判斷必須是 $_FILES['xxxx']['name'] 2
+    if(!empty($_FILES['pic']['name'])){ //upload 判斷必須是 !empty($_FILES['pic']['name'])
       $pic_name = time('now') . "." . end(explode(".", $_FILES['pic']['name']));//圖片名稱+副檔名<-使用time('now')防重複
       copy($_FILES['pic']['tmp_name'],'assets/'.$pic_name);
     }else{

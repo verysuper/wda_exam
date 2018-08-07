@@ -34,7 +34,14 @@
            </div>
       </div>
         <div id="left" class="ct">
-        	<div style="min-height:400px;">
+        	<div style="overflow:auto; min-height:500px;">
+<?php
+    //itemAll
+    $allCount=$conn->query("select * from p_item where sell=1")->rowCount();
+    ?><div class="ww"><a href="?">全部商品(<?=$allCount?>)</a></div><?php
+    $cat=$conn->query("select * from p_cat")->fetchAll();
+    print_r($cat);
+?>
         	            </div>
                         <span>
             	<div>進站總人數</div>

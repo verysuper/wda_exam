@@ -66,8 +66,9 @@
   <tr class="ct">
     <td colspan="2"><input type="submit" name="admin_itemAdd" id="button" value="送出" />
       <input type="reset" name="button2" id="button2" value="重設" />
-      <input type="button" name="button3" id="button3" value="返回" /></td>
-    </tr>
+      <a href="?redo=admin_th2"><input type="button" name="button3" id="button3" value="返回" /></a>
+    </td>
+  </tr>
 </table>
 
 </form>
