@@ -19,13 +19,28 @@
     }
   }
   if(isset($_POST['do']) && $_POST['do']=='chklogin'){
-    $_SESSION['buyItem']=$_POST['id'];
-    $_SESSION['buyQt'] = $_POST['qt'];
+    $_SESSION['buyItem'][]=$_POST['id'];
+    $_SESSION['buyQt'][] = $_POST['qt'];
     if(!isset($_SESSION['user'])){
-      header('location:user_login.php');
+      header('location:index1.php?do=user_login');
     }else{
-      header('location:user_buycart.php');
-
+      header('location:index1.php');
     }
+  }
+  if(isset($_POST['do']) && $_POST['do']=='chkexist_api'){
+    $sql="select * from user where acc='{$_POST['acc']}'";
+    if($_POST['acc']=='admin'){
+      echo '不得使用「 admin 」作為帳號註冊';
+    }
+    if($conn->query($sql)->rowCount()==1){
+      echo '帳號已存在';
+    }else{
+      echo '帳號不存在';
+    }
+  }
+  if(isset($_GET['do']) && $_GET['do']=='buycart_del'){
+    array_splice($_SESSION['buyItem'],$_GET['i'],1);
+    array_splice($_SESSION['buyQt'],$_GET['i'],1);
+    header('location:index1.php?do=user_buycart');
   }
 ?>

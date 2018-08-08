@@ -17,7 +17,7 @@
 ?>
 <h1>第一次購物</h1>
 <a href="?do=userReg"><img src="assets/0413.jpg" height='90'></a>
-<h1>第一次購物</h1>
+<h1>會員登入</h1>
 <form action="" method="post">
 <table width="80%" border="0" align="center">
   <tr>

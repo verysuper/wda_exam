@@ -5,6 +5,11 @@
     }else{
         $gateAdmin="<a href='admin.php'>管理登入</a>";
     }
+    if(isset($_SESSION['user'])){
+        $gateUser="<a href='user_logout.php'>登出</a>";
+    }else{
+        $gateUser="<a href='?do=user_login'>會員登入</a>";
+    }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
@@ -28,8 +33,8 @@
                 <a href="?">回首頁</a> |
                 <a href="?do=news">最新消息</a> |
                 <a href="?do=look">購物流程</a> |
-                <a href="?do=buycart">購物車</a> |
-                                <a href="?do=login">會員登入</a> |
+                <a href="?do=user_buycart">購物車</a> |
+                                <?=$gateUser?> |
                                 <?=$gateAdmin?>
            </div>
       </div>

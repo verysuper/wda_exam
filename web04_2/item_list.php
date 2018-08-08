@@ -26,7 +26,8 @@
     <!-- ****************偵測登入狀態****************** -->
     <span style="float:right;">
       <form action="api.php" method="post">
-        <input type="submit" name="do" value="chklogin" style="background-image:url(assets/0402.jpg); width:57px;height:18px;">
+        <!-- <input type="submit" name="do" value="chklogin" style="background-image:url(assets/0402.jpg); width:57px;height:18px;"> -->
+        <a href="?do=item_detail&id=<?=$row['id']?>"><input type="button" value="" style="background-image:url(assets/0402.jpg); width:57px;height:18px;"></a>
         <input type="hidden" name="id" value="<?=$row['id']?>">
         <input type="hidden" name="qt" value="1">
       </form>
