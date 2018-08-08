@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-08-08 10:27:58
+-- 產生時間： 2018-08-08 18:52:43
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 5.6.36
 
@@ -129,6 +129,68 @@ INSERT INTO `p_item` (`id`, `c1`, `c2`, `no`, `name`, `type`, `qt`, `price`, `in
 (9, 4, 11, '601986', 'yui', '555', 555, 555, '601986.jpg', '123', 0),
 (10, 4, 11, '601986', 'yui', '555', 555, 555, '601986.jpg', '123', 0);
 
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `p_order`
+--
+
+CREATE TABLE `p_order` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `acc` int(11) NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `addr` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `p_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `p_no` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `p_qt` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `p_price` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sub` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `o_no` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `o_date` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `p_order`
+--
+
+INSERT INTO `p_order` (`id`, `acc`, `name`, `mail`, `addr`, `tel`, `p_name`, `p_no`, `p_qt`, `p_price`, `sub`, `total`, `o_no`, `o_date`) VALUES
+(1, 0, 'aaa', 'aaa', 'aaa', 'aaa', '兩用式磁扣腰包', '000002', '11', '685', '7535', '19503', '20180809004120', '2018/08/09'),
+(2, 0, 'aaa', 'aaa', 'aaa', 'aaa', '手工訂製長夾', '000001', '1', '1200', '1200', '19503', '20180809004120', '2018/08/09'),
+(3, 0, 'aaa', 'aaa', 'aaa', 'aaa', '經典牛皮少女帆船鞋', '000004', '1', '1000', '1000', '19503', '20180809004120', '2018/08/09'),
+(4, 0, 'aaa', 'aaa', 'aaa', 'aaa', '反折式大容量手提肩背包 ', '000007', '11', '888', '9768', '19503', '20180809004120', '2018/08/09'),
+(5, 0, 'aaa', 'aaa', 'aaa', 'aaa', '兩用式磁扣腰包', '000002', '11', '685', '7535', '19503', '20180809004625', '2018/08/09'),
+(6, 0, 'aaa', 'aaa', 'aaa', 'aaa', '手工訂製長夾', '000001', '1', '1200', '1200', '19503', '20180809004625', '2018/08/09'),
+(7, 0, 'aaa', 'aaa', 'aaa', 'aaa', '經典牛皮少女帆船鞋', '000004', '1', '1000', '1000', '19503', '20180809004625', '2018/08/09'),
+(8, 0, 'aaa', 'aaa', 'aaa', 'aaa', '反折式大容量手提肩背包\r\n', '000007', '11', '888', '9768', '19503', '20180809004625', '2018/08/09');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `acc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pw` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `addr` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `acc`, `pw`, `tel`, `addr`, `mail`, `created`) VALUES
+(1, 'aaa', 'aaa', 'aaa', 'aaa', 'aaa', 'aaa', 'aaa'),
+(6, 'qw', 'qw', 'qw', 'qw', 'qw', 'qw', '2018/08/08');
+
 --
 -- 已匯出資料表的索引
 --
@@ -158,6 +220,18 @@ ALTER TABLE `p_item`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `p_order`
+--
+ALTER TABLE `p_order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 資料表索引 `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 在匯出的資料表使用 AUTO_INCREMENT
 --
 
@@ -184,6 +258,18 @@ ALTER TABLE `p_cat`
 --
 ALTER TABLE `p_item`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- 使用資料表 AUTO_INCREMENT `p_order`
+--
+ALTER TABLE `p_order`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- 使用資料表 AUTO_INCREMENT `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
