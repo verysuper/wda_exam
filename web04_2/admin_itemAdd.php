@@ -4,7 +4,7 @@
       $$key = $value;
     }
     $pic=$no.".".explode('.',$_FILES['pic']['name'])[1];
-    if(copy($_FILES['pic']['tmp_name'],$pic)){
+    if(copy($_FILES['pic']['tmp_name'],'assets/'.$pic)){
       $sql="insert into p_item value(null,'{$cat1}','{$cat2}','{$no}','{$name}','{$type}','{$qt}','{$price}','{$pic}','{$info}','0')";
       $conn->query($sql);
       echo $sql;

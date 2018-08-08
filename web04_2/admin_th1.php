@@ -77,13 +77,13 @@
   function cat_api(id,action){
     if(action==1){
       if(name=prompt()){
-        $.post('api.php',{'to':'categore','id':id,name,action},function(aa){
+        $.post('api.php',{'do':'categore','id':id,name,action},function(aa){
           document.location.href='admin.php?redo=admin_th1';
         });
       }
     }
     if(action==2){
-        $.post('api.php',{'to':'categore',id,action},function(aa){
+        $.post('api.php',{'do':'categore',id,action},function(aa){
           document.location.href='admin.php?redo=admin_th1';
         });
     }

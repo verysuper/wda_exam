@@ -33,14 +33,28 @@
                                 <?=$gateAdmin?>
            </div>
       </div>
-        <div id="left" class="ct">
-        	<div style="overflow:auto; min-height:500px;">
+        <div id="left" class="ct" style="overflow:auto; height:500px;">
+        	<div style="min-height:400px;">
 <?php
-    //itemAll
-    $allCount=$conn->query("select * from p_item where sell=1")->rowCount();
-    ?><div class="ww"><a href="?">全部商品(<?=$allCount?>)</a></div><?php
-    $cat=$conn->query("select * from p_cat")->fetchAll();
-    print_r($cat);
+//itemAll
+$allCount = $conn->query("select * from p_item where sell=1")->rowCount();
+echo "<div class='ww'><a href='?'>全部商品({$allCount})</a></div>"; 
+$cat = $conn->query("select * from p_cat")->fetchAll();
+foreach ($cat as $row1) {
+    if ($row1['parent'] == 0) {
+        $sql="select * from p_item where sell=1 and c1={$row1['id']}";
+        $c1Count = $conn->query($sql)->rowCount();
+        echo "<div class='ww'><a href='?c1={$row1['id']}'>{$row1['name']}($c1Count)</a>";
+foreach ($cat as $row2) {
+            if ($row2['parent'] == $row1['id']) {
+                $sql = "select * from p_item where sell=1 and c2={$row2['id']}";
+                $c2Count = $conn->query($sql)->rowCount();
+                echo "<div class='s'><a href='?c1={$row1['id']}&c2={$row2['id']}'>{$row2['name']}($c2Count)</a></div>";
+            }
+        }
+         echo "</div>";
+    }   
+}
 ?>
         	            </div>
                         <span>
@@ -49,12 +63,14 @@
                 	00005                </div>
             </span>
                     </div>
-        <div id="right">
+        <div id="right"  style="overflow:auto; height:500px;">
             <marquee>情人節特惠活動 &nbsp; 為了慶祝七夕情人節，將舉辦情人兩人到現場有七七折之特惠活動~        </marquee>
 <?php 
     if(!empty($_GET['do'])){
         include_once $_GET['do'].'.php';
-    }    
+    }else{
+        include_once "item_list.php";
+    }
 ?>
         </div>
         <div id="bottom" style="line-height: 70px; background: url(assets/bot.png); color: #FFF; clear: both;" class="ct">

@@ -6,7 +6,7 @@
     }
     if(!empty($_FILES['pic']['name'])){
       $pic_name=$no.".".explode('.',$_FILES['pic']['name'])[1];
-      copy($_FILES['pic']['tmp_name'],$pic_name);
+      copy($_FILES['pic']['tmp_name'],'assets/'.$pic_name);
     }
     if(!empty($_POST['cat1'])){
       $c1=$_POST['cat1'];
