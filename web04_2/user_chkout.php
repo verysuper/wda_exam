@@ -32,13 +32,19 @@
     $conn->query($str);
     unset($_SESSION['buyItem']);
     unset($_SESSION['buyQt']);
-    ?><script>alert('訂購成功,感謝您的選購');</script><?php
-    header('location:index1.php');
+    ?>
+    <script>
+      alert('訂購成功,感謝您的選購');
+      document.location.href='index1.php';
+    </script>
+    <?php
+    //header('location:index1.php');
   }
   if(!isset($_SESSION['user'])){
     header('location:index1.php?do=user_login');
   }else{
     $sql="select * from user where acc='{$_SESSION['user']}'";
+    // echo $sql;
     $row=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);  
   }
 ?>

@@ -33,10 +33,10 @@
         	<div style="min-height:400px;">
         	            	<a href="?do=admin&redo=admin_root">管理權限設置</a>
 												<?php if($permit[0]==1){?><a href="?do=admin&redo=admin_th1">商品分類與管理</a><?php }?>
-												<?php if($permit[1]==1){?><a href="?do=admin&redo=order">訂單管理</a><?php }?>
-												<?php if($permit[2]==1){?><a href="?do=admin&redo=mem">會員管理</a><?php }?>
+												<?php if($permit[1]==1){?><a href="?do=admin&redo=admin_order">訂單管理</a><?php }?>
+												<?php if($permit[2]==1){?><a href="?do=admin&redo=admin_mem">會員管理</a><?php }?>
 												<?php if($permit[3]==1){?><a href="?do=admin&redo=admin_bot">頁尾版權管理</a><?php }?>
-												<?php if($permit[4]==1){?><a href="?do=admin&redo=news">最新消息管理</a><?php }?>
+												<?php if($permit[4]==1){?><a href="?do=admin&redo=admin_news">最新消息管理</a><?php }?>
             	        	<a href="?do=admin&redo=admin_logout" style="color:#f00;">登出</a>
                     </div>
                     </div>
