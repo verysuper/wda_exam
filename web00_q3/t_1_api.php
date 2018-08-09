@@ -24,9 +24,21 @@
   $sel_day1 = "";
   $sel_day2 = "";
   $sel_day3 = "";
-  if( $ttt1 >= $tt){$sel_day1 = "<option value='".$select_day1."'>".$select_day1."</option>";}
-  if( $ttt2 >= $tt){$sel_day2 = "<option value='".$select_day2."'>".$select_day2."</option>";}
-  if( $ttt3 >= $tt){$sel_day3 = "<option value='".$select_day3."'>".$select_day3."</option>";}
+  if( $ttt1 >= $tt){
+    $uselect = "";
+    if(!empty($_POST["s2"])){if($_POST["s2"] == $select_day1){$uselect = "selected='selected'";}}
+    $sel_day1 = "<option value='".$select_day1."' ".$uselect.">".$select_day1."</option>";
+  }
+  if( $ttt2 >= $tt){
+    $uselect = "";
+    if(!empty($_POST["s2"])){if($_POST["s2"] == $select_day2){ $uselect = "selected='selected'";}}
+    $sel_day2 = "<option value='".$select_day2."' ".$uselect.">".$select_day2."</option>";
+  }
+  if( $ttt3 >= $tt){
+    $uselect = "";
+    if(!empty($_POST["s2"])){if($_POST["s2"] == $select_day3){ $uselect = "selected='selected'";}}
+    $sel_day3 = "<option value='".$select_day3."' ".$uselect.">".$select_day3."</option>";
+  }
 /**************************抓上映日期(上映後3天)**************************/
 ?>
           <select name="s2" id="s2" onchange="select2('<?=$s1?>')">
