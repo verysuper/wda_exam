@@ -16,7 +16,9 @@
   $sql="select * from rr";
   $result=$conn->query($sql)->fetchAll();
   //print_r($result);
-  //for($i=0;)
+  for($i=0;$i<count($result);$i++){
+    
+  }
   ?>
   <tr>
     <td><img src="imgs/" alt=""></td>
