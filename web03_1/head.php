@@ -1,6 +1,6 @@
 <?php
   try{
-    $conn=new PDO("mysql:host=127.0.0.1;dbname=wda_3_1;charset:UTF8;","root","");
+    $conn=new PDO("mysql:host=127.0.0.1;dbname=wda_3_1;charset=UTF8;","root","");
   }catch(PDOException $ex){
     echo $ex->getMessage();
   }
@@ -19,6 +19,7 @@
 <script src="scripts/jquery-1.9.1.min.js"></script>
 </head>
 
+<!-- <body onload="autoImg();"> -->
 <body>
 <div id="main">
   <div id="top" class="ct" style=" background:#999 center; background-size:cover; " title="替代文字">

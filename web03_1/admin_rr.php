@@ -4,7 +4,7 @@
     $pic=$time.".".explode('.',$_FILES['pic']['name'])[1];
     //echo $pic;
     if(copy($_FILES['pic']['tmp_name'],'imgs/'.$pic)){
-      $sql="insert into rr value(null,'{$_POST['name']}','{$pic}','0', '0', '1')";
+      $sql="insert into rr value(null,'{$_POST['name']}','{$pic}','999', '0', '1')";
       $conn->query($sql);
     }
   }
@@ -13,15 +13,12 @@
     $conn->query($sql);
     if(isset($_POST['name'])){
       for($i=0;$i<count($_POST['name']);$i++){
-        $sql = "update rr set name='{$_POST['name'][$i]}' where id='{$_POST['id'][$i]}'";
+        $sql = "update rr set name='{$_POST['name'][$i]}',
+              rank='{$_POST['rank'][$i]}',
+              ani='{$_POST['ani'][$i]}'
+              where id='{$_POST['id'][$i]}'";
         $conn->query($sql);
       }
-    }
-    if (isset($_POST['rank'])) {
-        for ($i = 0; $i < count($_POST['rank']); $i++) {
-            $sql = "update rr set rank='{$_POST['rank'][$i]}' where id='{$_POST['id'][$i]}'";
-            $conn->query($sql);
-        }
     }
     if (isset($_POST['display'])) {
         for ($i = 0; $i < count($_POST['display']); $i++) {
@@ -65,7 +62,7 @@
       <input type="checkbox" name="del[]"  value="<?=$rr[$i]['id']?>"/>刪除
       <input type="hidden" name="id[]" value="<?=$rr[$i]['id']?>">
     </td>
-    <td><select name="select" id="select">
+    <td><select name="ani[]" id="select">
       <option value="1" <?php if($rr[$i]['ani']=='1'){echo "selected";}?>>淡入</option>
       <option value="2" <?php if($rr[$i]['ani']=='2'){echo "selected";}?>>縮放</option>
       <option value="3" <?php if($rr[$i]['ani']=='3'){echo "selected";}?>>滑出</option>

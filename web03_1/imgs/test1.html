@@ -6,22 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 		<style type="text/css">
-  	#bb{
-			width:300px;
-			height:300px;
-			background-color:#FF0;
-			animation: ani 5s ease-in-out infinite;
-	}
+	#a1{
+		width:200px;
+		height:300px;
+		position:relative;/*相對位置*/
+		/* background-color:#FF0; */
+		background-image: url(03A01.jpg);
+		animation: ani 5s ease-in infinite;
+		}
 	@keyframes ani{
-		0% {left:0px; top:0px;}
-		50% {left:300px; top:0px;}
+		/* 0% {left:-300px; top:0px;}
+		100% {left:300px; top:0px;} */
+		from {left: -300px;}
+    to {left: 300px;}
 		}
   </style>
 </head>
 <body>
-  <div id="aa" style="width:200px; height:300px; background-color:#F00; overflow:hidden;" >
-  	<div id="bb"></div>
+  <div style="width:200px; height:300px; background-color:#F00; overflow:hidden;" >
+  	<div id="a1"></div>
   </div>
-  
+		<div style="width:200px; height:300px; background-color:rgb(42, 170, 110); overflow:hidden;">
+			<div id="a2"></div>
+		</div>
+			<div style="width:200px; height:300px; background-color:rgb(55, 0, 255); overflow:hidden;">
+				<div id="a3"></div>
+			</div>
 </body>
 </html>
