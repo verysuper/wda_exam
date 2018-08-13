@@ -25,7 +25,7 @@
   <div id="top" class="ct" style=" background:#999 center; background-size:cover; " title="替代文字">
     <h1>ABC影城</h1>
   </div>
-  <div id="top2"> <a href="index1.php">首頁</a> <a href="ticket.php">線上訂票</a> <a href="#">會員系統</a> <a href="admin.php">管理系統</a> </div>
+  <div id="top2"> <a href="index1.php">首頁</a> <a href="ticket1.php">線上訂票</a> <a href="#">會員系統</a> <a href="admin.php">管理系統</a> </div>
   <div id="text"> <span class="ct">最新活動</span>
     <marquee direction="right">
     ABC影城票價全面八折優惠1個月
