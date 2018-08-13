@@ -1,6 +1,7 @@
 <?php
 $sql="select * from vv where display = 1 and ondate > curdate()-3"; //***** ondate > curdate()-3
 $vvArr=$conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+// print_r($vvArr,true);
 ?>
 <style>
 .movie_list{
