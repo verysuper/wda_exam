@@ -81,7 +81,7 @@
   function get_session(){
     $('#movie_session').html('');
     mdate=$('#movie_date').val();
-    $.post('api.php',{'ddl':'get_session','date':mdate},function(bbb){
+    $.post('api.php',{'ddl':'get_session','mdate':mdate,'mid':mid},function(bbb){
       $('#movie_session').html(bbb);
     });
   }
