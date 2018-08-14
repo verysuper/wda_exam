@@ -6,6 +6,7 @@ if(!empty($_GET["redo"])){
   if($_GET["redo"]=="vv"){ $include ="admin_vv.php";}
   if($_GET["redo"]=="vvv"){ $include ="admin_vvv.php";}
   if($_GET["redo"]=="w"){ $include ="admin_w.php";}
+  if($_GET["redo"]=="order"){ $include ="admin_owo.php";}
 }
 
 ?>

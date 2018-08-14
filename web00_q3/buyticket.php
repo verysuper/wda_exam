@@ -32,11 +32,14 @@
   for($i=1;$i<=20;$i++){
     $j = ceil($i/5);
     $k = $i - (($j - 1) * 5) ;
+    $sql = "select * from ding_log where d_l_day ='".$n2."' and d_l_m = '".$n1."' and d_l_time = '".$n3."' and d_l_jo = '$i'";
+    $ro = mysqli_query($link,$sql);
+    $totle = mysqli_num_rows($ro);
 ?>
       <div class="dingwa">
-        <img src="images/a0.png"><br>
+        <img src="images/a<?=$totle?>.png"><br>
         <?=$j?>排-<?=$k?>號<br>
-<div class="cb"><input type="checkbox" name="aa[]" id="cs<?=$i?>" value="<?=$i?>" onclick="check_select(<?=$i?>);"></div>
+<div class="cb"><?php if($totle == 0){?><input type="checkbox" name="aa[]" id="cs<?=$i?>" value="<?=$i?>" onclick="check_select(<?=$i?>);"><?php }else{echo "<br>";}?></div>
       </div>
 <?php }?>
     </div>

@@ -7,7 +7,11 @@
   if(!empty($_POST["s3"])){$s3 = $_POST["s3"];}//預先選取
 
 for($i=1;$i<=5;$i++){
-  $ya[$i] = "20".$i;
+  $sql = "select * from ding_log where d_l_day ='".$s2."' and d_l_m = '".$ss."' and d_l_time = '".$i."'";
+  $ro = mysqli_query($link,$sql);
+  $totle = mysqli_num_rows($ro);
+
+  $ya[$i] = 20-$totle;
 }
   $ttt = strtotime("+6hour");
   $today = date("Y-m-d",$ttt); //抓今天日期(用來判斷訂票時間是否是今天)

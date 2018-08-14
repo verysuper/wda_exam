@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-08-08 08:43:53
+-- 產生時間： 2018-08-14 05:01:33
 -- 伺服器版本: 10.1.31-MariaDB
 -- PHP 版本： 5.6.35
 
@@ -21,6 +21,42 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `db00_q3`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `ding_log`
+--
+
+CREATE TABLE `ding_log` (
+  `d_l_seq` int(10) UNSIGNED NOT NULL,
+  `d_l_m` int(10) NOT NULL COMMENT '電影',
+  `d_l_day` date NOT NULL COMMENT '日期',
+  `d_l_time` int(1) NOT NULL COMMENT '場次',
+  `d_l_jo` int(10) NOT NULL COMMENT '座位',
+  `d_l_no` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '編號',
+  `d_l_cnt` int(4) NOT NULL COMMENT '下訂次數'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `ding_log`
+--
+
+INSERT INTO `ding_log` (`d_l_seq`, `d_l_m`, `d_l_day`, `d_l_time`, `d_l_jo`, `d_l_no`, `d_l_cnt`) VALUES
+(1, 6, '2019-03-28', 5, 3, '201808140000', 0),
+(2, 6, '2019-03-28', 5, 8, '201808140000', 0),
+(3, 6, '2019-03-28', 5, 13, '201808140000', 0),
+(4, 6, '2019-03-28', 5, 18, '201808140000', 0),
+(5, 6, '2019-03-28', 5, 1, '201808140000', 0),
+(6, 6, '2019-03-28', 5, 6, '201808140000', 0),
+(7, 6, '2019-03-28', 5, 5, '201808140001', 1),
+(8, 6, '2019-03-28', 5, 20, '201808140001', 1),
+(9, 11, '2018-08-15', 3, 7, '201808140002', 2),
+(10, 11, '2018-08-15', 3, 14, '201808140002', 2),
+(11, 11, '2018-08-15', 1, 3, '201808143', 3),
+(12, 11, '2018-08-15', 1, 8, '201808143', 3),
+(13, 7, '2019-01-24', 1, 3, '197001010004', 4),
+(14, 11, '2018-08-16', 4, 2, '201808160005', 5);
 
 -- --------------------------------------------------------
 
@@ -75,6 +111,12 @@ CREATE TABLE `pp` (
 --
 
 --
+-- 資料表索引 `ding_log`
+--
+ALTER TABLE `ding_log`
+  ADD PRIMARY KEY (`d_l_seq`);
+
+--
 -- 資料表索引 `move`
 --
 ALTER TABLE `move`
@@ -89,6 +131,12 @@ ALTER TABLE `pp`
 --
 -- 在匯出的資料表使用 AUTO_INCREMENT
 --
+
+--
+-- 使用資料表 AUTO_INCREMENT `ding_log`
+--
+ALTER TABLE `ding_log`
+  MODIFY `d_l_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- 使用資料表 AUTO_INCREMENT `move`
