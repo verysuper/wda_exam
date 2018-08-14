@@ -6,8 +6,22 @@
   }
   date_default_timezone_set('Asia/Taipei');
   session_start();
-  foreach($_GET as $key => $value){
-    $$key=$value;
+
+  if(!empty($_GET['mid'])){
+    foreach ($_GET as $key => $value) {
+        $$key = $value;
+    }
+    $sql="select * from morder where mid='{$mid}' and odate='{$mdate}' and osess='{$msess}'";
+    $row=$conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    $chairAll="";
+    $chairTotal = 0;
+    if($row){
+      foreach($row as $arr){
+        $chairAll .= $arr['chair'];
+        $chairTotal = $chairTotal +$arr['qt'];
+      }
+    }
+    $chairArr = str_split($chairAll, 2);
   }
 ?>
 <style>/******************/
@@ -17,20 +31,43 @@
     display:inline-block;
     margin:5px;
     background:#ff0;
+    float:left; /*沒差*/
   }/******************/
 </style>
-<form action="" method="post">
+<form action="ticket3.php" method="post">
 <table width="50%" border="0" align="center">
   <tr>
     <td>
       <?php
         for($i=0;$i<4;$i++){
           for($j=0;$j<5;$j++){
-            ?><div class="chair">
-            <?=$i?>排-<?=$j?>號
-            <img src="assets/03D02.png" alt="">
-            <input type="checkbox" name="chair[]" value="<?=$i.$j?>" onclick="doCheck(this);">
-            </div><?php
+            if($chairArr==""){
+              ?>
+                <div class="chair">
+                  <?=$i?>排<?=$j?>號
+                  <img src="assets/03D02.png" alt="">
+                  <input type="checkbox" name="chair[]" value="<?=$i . $j?>" onclick="doCheck(this);">
+                </div>
+              <?php
+            }else{
+              if(in_array($i.$j , $chairArr)){
+              ?>
+                <div class="chair">
+                  <?=$i?>排<?=$j?>號
+                  <img src="assets/03D03.png" alt="">
+                </div>
+              <?php
+              }else{
+              ?>
+                <div class="chair">
+                  <?=$i?>排<?=$j?>號
+                  <img src="assets/03D02.png" alt="">
+                  <input type="checkbox" name="chair[]" value="<?=$i . $j?>" onclick="doCheck(this);">
+                </div>
+              <?php
+              }
+            }
+
           }
         }
       ?>

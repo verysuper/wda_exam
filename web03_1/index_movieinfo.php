@@ -8,7 +8,7 @@
   <div id="mm">
     <div class="tab rb" style="width:87%;">
       <div style="background:#FFF; width:100%; color:#333; text-align:left">
-        <video src="imgs/<?=$row['trailer']?>" width="300px" height="250px" controls="" style="float:right;"></video>
+        <embed src="imgs/<?=$row['trailer']?>" width="300px" height="250px" controls="" style="float:right;"></embed>
         <font style="font-size:24px"> <img src="imgs/<?=$row['poster']?>" width="200px" height="250px" style="margin:10px; float:left">
         <p style="margin:3px">影片名稱 ：<?=$row['name']?>
           <input type="button" value="線上訂票" onclick="lof(&#39;?do=ord&amp;id=4&#39;)" style="margin-left:50px; padding:2px 4px" class="b2_btu">
