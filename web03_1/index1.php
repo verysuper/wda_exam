@@ -39,16 +39,16 @@
           <!-- <ul class="lists"></ul> -->
           <!-- <ul class="controls"></ul> -->
       <div id="showBig" align='center' style='height:300px;'></div><!-- ***** -->
-      <div id="showList" align='center' style='height:150px;'><!-- ***** -->
-        <div onclick='pp(1)'  style='float:left;'><img src='imgs/01E01.jpg' width='70'></div><!-- ***** -->
+      <div id="showList" align='center' style='height:100px;display: flex;justify-content:center;'><!-- ***** -->
+        <div onclick='pp(1)'  style=''><img src='imgs/01E01.jpg' width='30'></div><!-- ***** -->
 <?php
     for($i=0;$i<count($rrArr);$i++){
       ?>
-      <img src='imgs/<?=$rrArr[$i]['pic']?>'  width='70' style='float:left;' class='im' id='ssaa<?=$i?>' onclick='showImg(<?=$i?>)'/>
+      <img src='imgs/<?=$rrArr[$i]['pic']?>'  width='70' style='' class='im' id='ssaa<?=$i?>' onclick='showImg(<?=$i?>)'/>
       <?php
     }
 ?>
-        <div onclick='pp(2)'  style='float:left;'><img src='imgs/01E02.jpg' width='70'></div><!-- ***** -->
+        <div onclick='pp(2)'  style=''><img src='imgs/01E02.jpg' width='30'></div><!-- ***** -->
       </div><!-- ***** -->
         </div>
       </div>

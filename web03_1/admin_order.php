@@ -3,6 +3,17 @@
     $sql="DELETE FROM `morder` WHERE no = '{$_POST['no']}'";
     $conn->query($sql);
   }
+  if (isset($_POST['delSelect'])) {
+    if(isset($_POST['radio1'])){
+      $sql = "DELETE FROM morder WHERE mdate = '{$_POST['mdate']}'";
+      $conn->query($sql);
+    }
+    if (isset($_POST['radio2'])) {
+      $sql = "DELETE FROM morder WHERE mid = '{$_POST['mid']}'";
+      $conn->query($sql);
+    }
+  }
+
 ?>
 <div id="mm">
   <div class="rb tab" style="width:95%;">
@@ -12,14 +23,22 @@
     </tr>
 <form action="" method="post">  <tr>
     <td colspan="7">快速刪除:
-      <input type="radio" name="radio" id="radio" value="radio" />
+      <input type="radio" name="radio1" id="radio1" value="radio1" />
       依日期
-      <input type="text" name="textfield" id="textfield" />
-      <input type="radio" name="radio" id="radio2" value="radio" />
-依電影
-<select name="select" id="select">
-</select>
-<input type="submit" name="button2" id="button2" value="刪除" /></td>
+      <input type="text" name="mdate" value="" />
+      <input type="radio" name="radio2" id="radio2" value="radio2" />
+      依電影
+      <select name="mid" id="select">
+        <option value="">請選擇電影</option>
+      <?php
+        $sql = "select * from vv where display = 1 and ondate > curdate()-3"; //***** ondate > curdate()-3
+        $vvArr = $conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($vvArr as $row) {
+            ?><option value="<?=$row['id']?>"><?=$row['name']?></option><?php
+        }
+      ?>
+      </select>
+<input type="submit" name="delSelect" id="button2" value="刪除" /></td>
     </tr></form>
   <tr>
     <td>訂單編號</td>
