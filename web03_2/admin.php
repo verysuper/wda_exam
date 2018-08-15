@@ -1,3 +1,6 @@
+<?php
+  include_once "_config.php";
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0055)?do=admin -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,9 +24,16 @@
     </marquee>
   </div>
   <div id="mm">
-    <div class="ct a rb" style="position:relative; width:101.5%; left:-1%; padding:3px; top:-9px;"> <a href="?do=admin&redo=tit">網站標題管理</a>| <a href="?do=admin&redo=go">動態文字管理</a>| <a href="?do=admin&redo=rr">預告片海報管理</a>| <a href="?do=admin&redo=vv">院線片管理</a>| <a href="?do=admin&redo=order">電影訂票管理</a> </div>
+    <div class="ct a rb" style="position:relative; width:101.5%; left:-1%; padding:3px; top:-9px;"> <a href="?do=admin&redo=tit">網站標題管理</a>| <a href="?do=admin&redo=go">動態文字管理</a>| <a href="?do=admin&redo=admin_rr">預告片海報管理</a>| <a href="?do=admin&redo=admin_vv">院線片管理</a>| <a href="?do=admin&redo=admin_order">電影訂票管理</a> </div>
     <div class="rb tab">
-      <h2 class="ct">請選擇所需功能</h2>
+      <?php
+        if(empty($_GET['redo'])){
+          ?><h2 class="ct">請選擇所需功能</h2><?php
+        }else{
+          include_once $_GET['redo'].".php";
+        }
+      ?>
+      
     </div>
   </div>
   <div id="bo"> ©Copyright 2010~2014 ABC影城 版權所有 </div>
