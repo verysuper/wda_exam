@@ -10,6 +10,7 @@
   $move = $_POST["n1"];
   $day =  $_POST["n2"];
   $xx = $_POST["n3"];
+
   $tday = strtotime($day); 
   $pd = date("Ymd",$tday).str_pad($totle,4,'0',STR_PAD_LEFT);
 

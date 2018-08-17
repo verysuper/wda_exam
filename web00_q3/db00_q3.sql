@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-08-14 05:01:33
+-- 產生時間： 2018-08-15 09:25:07
 -- 伺服器版本: 10.1.31-MariaDB
 -- PHP 版本： 5.6.35
 
@@ -43,20 +43,26 @@ CREATE TABLE `ding_log` (
 --
 
 INSERT INTO `ding_log` (`d_l_seq`, `d_l_m`, `d_l_day`, `d_l_time`, `d_l_jo`, `d_l_no`, `d_l_cnt`) VALUES
-(1, 6, '2019-03-28', 5, 3, '201808140000', 0),
-(2, 6, '2019-03-28', 5, 8, '201808140000', 0),
-(3, 6, '2019-03-28', 5, 13, '201808140000', 0),
-(4, 6, '2019-03-28', 5, 18, '201808140000', 0),
-(5, 6, '2019-03-28', 5, 1, '201808140000', 0),
-(6, 6, '2019-03-28', 5, 6, '201808140000', 0),
-(7, 6, '2019-03-28', 5, 5, '201808140001', 1),
-(8, 6, '2019-03-28', 5, 20, '201808140001', 1),
-(9, 11, '2018-08-15', 3, 7, '201808140002', 2),
-(10, 11, '2018-08-15', 3, 14, '201808140002', 2),
-(11, 11, '2018-08-15', 1, 3, '201808143', 3),
-(12, 11, '2018-08-15', 1, 8, '201808143', 3),
-(13, 7, '2019-01-24', 1, 3, '197001010004', 4),
-(14, 11, '2018-08-16', 4, 2, '201808160005', 5);
+(21, 11, '2018-08-17', 3, 3, '201808170001', 1),
+(22, 11, '2018-08-17', 5, 14, '201808170002', 2);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `look_pic`
+--
+
+CREATE TABLE `look_pic` (
+  `l_p_seq` int(10) UNSIGNED NOT NULL,
+  `l_p_look` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `look_pic`
+--
+
+INSERT INTO `look_pic` (`l_p_seq`, `l_p_look`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -107,6 +113,19 @@ CREATE TABLE `pp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- 資料表的匯出資料 `pp`
+--
+
+INSERT INTO `pp` (`p_seq`, `p_name`, `p_pic`, `p_look`, `p_desc`) VALUES
+(1, 'a1', '20180814152104.jpg', 1, 0),
+(2, 'a2', '20180814152110.jpg', 1, 0),
+(3, 'a3', '20180814152114.jpg', 1, 0),
+(4, 'a4', '20180814152124.jpg', 1, 0),
+(5, 'a5', '20180814152131.jpg', 1, 0),
+(6, 'a6', '20180814152140.jpg', 1, 0),
+(7, 'a7', '20180814152146.jpg', 1, 0);
+
+--
 -- 已匯出資料表的索引
 --
 
@@ -115,6 +134,12 @@ CREATE TABLE `pp` (
 --
 ALTER TABLE `ding_log`
   ADD PRIMARY KEY (`d_l_seq`);
+
+--
+-- 資料表索引 `look_pic`
+--
+ALTER TABLE `look_pic`
+  ADD PRIMARY KEY (`l_p_seq`);
 
 --
 -- 資料表索引 `move`
@@ -136,7 +161,13 @@ ALTER TABLE `pp`
 -- 使用資料表 AUTO_INCREMENT `ding_log`
 --
 ALTER TABLE `ding_log`
-  MODIFY `d_l_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `d_l_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- 使用資料表 AUTO_INCREMENT `look_pic`
+--
+ALTER TABLE `look_pic`
+  MODIFY `l_p_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表 AUTO_INCREMENT `move`
@@ -148,7 +179,7 @@ ALTER TABLE `move`
 -- 使用資料表 AUTO_INCREMENT `pp`
 --
 ALTER TABLE `pp`
-  MODIFY `p_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `p_seq` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

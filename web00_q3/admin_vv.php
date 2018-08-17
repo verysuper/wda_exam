@@ -12,7 +12,7 @@ if(!empty($_POST["m_name"])){
   $sql="insert into move value(null,'".$m_name."','".$m_con."','".$m_time."','".$m_lv."','".$m_day."','".$m_fa."','".$m_d."','".$_FILES["m_u"]["name"]."','".$m_pic."','0','0')";
   mysqli_query($link,$sql);
   copy($_FILES["m_pic"]["tmp_name"],"pic/".$m_pic);
-  copy($_FILES["m_u"]["tmp_name"],"avi/".$m_u);
+  copy($_FILES["m_u"]["tmp_name"],"avi/".$_FILES["m_u"]["name"]);
 }
 ?>
 

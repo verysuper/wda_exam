@@ -1,0 +1,8 @@
+.ani1{
+  position: relative;
+  animation: ani1 5s ease-out infinite;
+}
+@keyframes ani1{
+  from{left: -300px;}
+  to{left: 300px;}
+}

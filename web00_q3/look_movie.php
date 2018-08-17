@@ -11,7 +11,7 @@
         <video src="avi/<?=$rr["m_u"]?>" width="300px" height="250px" controls="" style="float:right;"></video>
         <font style="font-size:24px"> <img src="Profile page_files/03B20.png" width="200px" height="250px" style="margin:10px; float:left">
         <p style="margin:3px">影片名稱 ：<?=$rr["m_name"]?>
-          <input type="button" value="線上訂票" onclick="lof(&#39;?do=ord&amp;id=4&#39;)" style="margin-left:50px; padding:2px 4px" class="b2_btu">
+          <input type="button" value="線上訂票" onclick="document.location.href='ticket.php?no=<?=$rr["m_seq"]?>'" style="margin-left:50px; padding:2px 4px" class="b2_btu">
         </p>
         <p style="margin:3px">影片分級 ： <img src="images/<?=$rr["m_lv"]?>.png"> </p>
         <p style="margin:3px">影片片長 ： <?=$rr["m_time"]?></p>
