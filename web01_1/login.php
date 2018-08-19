@@ -1,27 +1,8 @@
 <?php
-	include_once('_config.php');
-	if(!empty($_SESSION['acc'])){
-		?>
-		<script>document.location.href="admin.php";</script>
-		<?php
-		exit();
-	}
-	if(!empty($_POST['acc']) && !empty($_POST['ps'])){
-		$login = new Admin($conn);
-		if($login->login($_POST['acc'],$_POST['ps'])){
-			$_SESSION['acc']=$_POST['acc'];
-			?>
-			<script>document.location.href="admin.php";</script>
-			<?php
-		}else{
-			?>
-			<script>alert("帳號或密碼輸入錯誤");</script>
-			<?php
-		}
-	}
+	include_once '_config.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0048)?do=admin -->
+<!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>卓越科技大學校園資訊系統</title>
@@ -39,24 +20,24 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-    	<a title="" href="?"><div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div><!--標題--></a>
+    	<a title="" href="index1.php"><div class="ti" style="background:url('imgs/<?=$title['title']?>'); background-size:cover;"></div><!--標題--></a>
         	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
                     	                            <span class="t botli">主選單區</span>
+																									<?=$menu?>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 : 
-                        	1                        </span>
+                    	<span class="t">進站總人數 : <?=$total['total']?></span>
                     </div>
         		</div>
-                <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
+<div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
                 	                     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-                    	                    </marquee>
+                    	                    <?=$adStr?></marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
-                                <form method="post"><!--有改-->
+                                <form method="post" action="">
                         	    	<p class="t botli">管理員登入區</p>
                         			<p class="cent">帳號 ： <input name="acc" autofocus="" type="text"></p>
                         	        <p class="cent">密碼 ： <input name="ps" type="password"></p>
@@ -81,17 +62,18 @@
                         </script>
                                  <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 	<!--右邊-->   
-                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('login.php')">管理登入</button>
+                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('<?=$login_url?>')"><?=$login_text?></button>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
+											<?=$gallery?>
 						                        <script>
-                        	var nowpage=0,num=0;
+                        	var nowpage=0,num=<?=$imgLen?>;
 							function pp(x)
 							{
 								var s,t;
 								if(x==1&&nowpage-1>=0)
 								{nowpage--;}
-								if(x==2&&(nowpage+1)*3<=num*1+3)
+								if(x==2&&(nowpage+3)<num)
 								{nowpage++;}
 								$(".im").hide()
 								for(s=0;s<=2;s++)
@@ -107,8 +89,8 @@
                             </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"></span>
+                	<span class="t" style="line-height:123px;"><?=$bottom['bottom']?></span>
                 </div>
     </div>
-
+<script>ww();</script>
 </body></html>
