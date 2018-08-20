@@ -1,6 +1,20 @@
 <?php
 	include_once '_config.php';
-	if(isset($_SESSION['admin']))
+	//
+	$sql="SELECT * FROM mvims WHERE display=1";
+	$mvims = $conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+	$mvimStr="";
+	foreach($mvims as $mvim){
+		$mvimStr.="'{$mvim['mvim']}',";
+	}
+	// print_r($mvimStr);
+	$newsStr="";
+	$sql = "SELECT * FROM newss WHERE display=1";
+	$newss = $conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+	$newLen=count($newss);
+	for($i=0;$i<5;$i++){
+		$newsStr.="<li>".mb_substr($newss[$i]['news'],0,10)."...<div class='all' style='display:none;'>{$newss[$i]['news']}</div></li>";
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
@@ -21,30 +35,71 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-    	<a title="" href="index1.php"><div class="ti" style="background:url('imgs/<?=$title['title']?>'); background-size:cover;"></div><!--標題--></a>
+    	<a title="" href="./home_files/home.htm"><div class="ti" style="background:url('imgs/<?=$title['title']?>'); background-size:cover;"></div><!--標題--></a>
         	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
-                    	                            <span class="t botli">主選單區</span>
-																									<?=$menu?>
+																									<span class="t botli">主選單區</span>
+																									<?=$menuStr?>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     	<span class="t">進站總人數 : <?=$total['total']?></span>
                     </div>
         		</div>
-<div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
+                <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
                 	                     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-                    	                    <?=$adStr?></marquee>
+                    	                    <?=$abStr?></marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
-                                <form method="post" action="">
-                        	    	<p class="t botli">管理員登入區</p>
-                        			<p class="cent">帳號 ： <input name="acc" autofocus="" type="text"></p>
-                        	        <p class="cent">密碼 ： <input name="ps" type="password"></p>
-                        	        <p class="cent"><input value="送出" type="submit"><input type="reset" value="清除"></p>
-                        	    </form>
-                        	                </div>
+                                        <script>
+                    	var lin=new Array(<?=$mvimStr?>);
+						var now=0;
+						if(lin.length>1)
+						{
+							setInterval("ww()",3000);
+							now=1;
+						}
+						function ww()
+						{
+							$("#mwww").html("<embed loop=true src='imgs/"+lin[now]+"' style='width:99%; height:100%;'></embed>")
+							//$("#mwww").attr("src",lin[now])
+							now++;
+							if(now>=lin.length)
+							now=0;
+						}
+                    </script>
+                	<div style="width:100%; padding:2px; height:290px;">
+                    	<div id="mwww" loop="true" style="width:100%; height:100%;">
+																													<div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
+																													
+                                                        </div>
+                    </div>
+                	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
+                    		<span class="t botli">最新消息區 <span style='float:right;'>321</span>
+                            								</span>
+														<ul class="ssaa" style="list-style-type:decimal;">
+														<!-- <li>...<div class='all' style='display:none;'></div></li> -->
+														<?=$newsStr?>
+                            	                            </ul>
+        			<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
+                    	<script>
+						$(".ssaa li").hover(
+							function ()
+							{
+								$("#altt").html("<pre>"+$(this).children(".all").html()+"</pre>")
+								$("#altt").show()
+							}
+						)
+						$(".ssaa li").mouseout(
+							function()
+							{
+								$("#altt").hide()
+							}
+						)
+                        </script>
+                    </div>
+                	                </div>
                 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
 						$(".sswww").hover(
@@ -65,8 +120,8 @@
                 	<!--右邊-->   
                 	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('<?=$login_url?>')"><?=$login_text?></button>
                 	<div style="width:89%; height:480px;" class="dbor">
-                    	<span class="t botli">校園映象區</span>
-											<?=$gallery?>
+											<span class="t botli">校園映象區</span>
+											<?=$imgStr?>
 						                        <script>
                         	var nowpage=0,num=<?=$imgLen?>;
 							function pp(x)
