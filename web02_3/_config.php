@@ -19,7 +19,7 @@ $allTotal = $conn->query($sql)->fetch(PDO::FETCH_ASSOC)['total'];
 $sql = "SELECT count FROM log_visit where time='{$curtime}'";
 $todayTotal = $conn->query($sql)->fetch(PDO::FETCH_ASSOC)['count'];
 
-$_SESSION['acc'] = 'admin';
+// $_SESSION['acc'] = 'admin';
 switch ($_SESSION['acc']) {
     case 'admin':
         $utype = 999;

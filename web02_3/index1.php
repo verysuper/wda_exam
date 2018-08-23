@@ -56,16 +56,16 @@ if ($utype < 1) {
     if ($utype > 1) {
         echo "<a href='?do=admin'>管理</a>|";
     }
-    echo "<a href='?do=logout.php'>登出</a>";
+    echo "<a href='?do=logout'>登出</a>";
 }
 ?>
                     	                    </span>
                     	<div class="">
 <?php
-if (!$_GET) {
+if (empty($_GET['do'])) {
     include_once 'frame.html';
 }else{
-	
+	include_once $_GET['do'].'.php';
 }
 ?>
                 		                        </div>
@@ -74,7 +74,7 @@ if (!$_GET) {
         </div>
         <div id="bottom">
     	    本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © <?=date("Y")?>健康促進網社群平台 All Right Reserved
-    		 <br>服務信箱：health@test.labor.gov.tw<img src="./home_files/02B02.jpg" width="45">
+    		 <br>服務信箱：health@test.labor.gov.tw<img src="./home_files/02B02.jpg" width="20">
         </div>
     </div>
 
