@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php
+	include_once '_config.php';
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -15,9 +18,10 @@
 <iframe name="back" style="display:none;"></iframe>
 	<div id="all">
     	<div id="title">
-        00 月 00 號 Tuesday | 今日瀏覽: 1 | 累積瀏覽: 36 <a href="index1.php" style="float:right">回首頁</a></div></div>
+		<?=$showTime?> | 今日瀏覽: <?=$totalToday?> | 累積瀏覽: <?=$totalAll?>        <a href="index1.php" style="float:right;">回首頁</a>
+		</div>
         <div id="title2">
-        	<img src="assets/02B01.jpg" width="100%" alt="健康促進網－回首頁" title="健康促進網－回首頁">
+        	<img src="assets/02B01.jpg" alt="健康促進網－回首頁" title="健康促進網－回首頁">
         </div>
         <div id="mm">
         	<div class="hal" id="lef">
@@ -29,11 +33,14 @@
                	                 </div>
             <div class="hal" id="main">
             	<div>
-            		
+            		<marquee behavior="" direction="" width="78%">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
                 	<span style="width:18%; display:inline-block;">
                     	                    	<a href="?do=login">會員登入</a>
                     	                    </span>
                     	<div class="">
+<?php
+	
+?>
                 		                        </div>
                 </div>
             </div>

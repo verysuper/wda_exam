@@ -41,11 +41,11 @@
         $result2=$conn->query($sql2);
         if($result2->rowCount()>0){
           ?>
-            <a onclick="good('<?=$row['id']?>', '2', '<?=$_SESSION["acc"]?>')" id="good<?=$row['id']?>">收回讚</a>
+            <a onclick="good('<?=$row['id']?>', '2', '<?=$_SESSION['acc']?>')" id="good<?=$row['id']?>">收回讚</a>
           <?php
         }else{
           ?>
-            <a onclick="good('<?=$row['id']?>', '1', '<?=$_SESSION["acc"]?>')" id="good<?=$row['id']?>">讚</a>
+            <a onclick="good('<?=$row['id']?>', '1', '<?=$_SESSION['acc']?>')" id="good<?=$row['id']?>">讚</a>
           <?php
         }
       }
