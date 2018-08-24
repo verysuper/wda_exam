@@ -65,7 +65,11 @@ if ($utype < 1) {
 if (empty($_GET['do'])) {
     include_once 'frame.html';
 }else{
-	include_once $_GET['do'].'.php';
+	if( $_GET['do']=='admin'){
+		echo '請選擇管理項目';
+	}else{
+		include_once $_GET['do'].'.php';
+	}	
 }
 ?>
                 		                        </div>

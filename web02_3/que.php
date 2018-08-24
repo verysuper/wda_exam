@@ -31,7 +31,7 @@
         if(!$utype>0){
           echo "請先登入";
         }else{
-          ?><a href="">參與投票</a><?php
+          ?><a href="?do=que2&id=<?=$row['id']?>&topic=<?=$row['topic']?>">參與投票</a><?php
         }
       ?>
     </td>
