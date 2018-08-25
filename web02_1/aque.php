@@ -2,9 +2,9 @@
 if (isset($_POST['aque']) && !empty($_POST['topic']) && !empty($_POST['item'])) {
     $sql = "insert into que values(null,'{$_POST['topic']}',0,0)";
     $result = $conn->query($sql);
-    $parent = $conn->lastInsertId();
+    $parent = $conn->lastInsertId();//*************** */
     for($i=0;$i<count($_POST['item']);$i++){
-      $sql = "insert into que values(null,'{$_POST['topic']}','{$parent}',0)";
+      $sql = "insert into que values(null,'{$_POST['item']}','{$parent}',0)";
       $result = $conn->query($sql);
     }
 }

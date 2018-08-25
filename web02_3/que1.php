@@ -25,7 +25,6 @@
     <?php
   }
 ?>
-
   <tr>
     <td colspan="2" align="center"><a href="?do=que"><input type="button" value="返回""></a></td>
   </tr>

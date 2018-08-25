@@ -1,11 +1,11 @@
 <?php
 //uptata
 if (isset($_POST['anews'])) {
+    for ($i = 0; $i < count($_POST['id']); $i++) {
+        $sql = "update article set display = 0 where id='{$_POST['id'][$i]}'";
+        $result = $conn->query($sql);
+    }
     if (!empty($_POST['display'])) {
-        for ($i = 0; $i < count($_POST['id']); $i++) {
-          $sql = "update article set display = 0 where id='{$_POST['id'][$i]}'";
-          $result = $conn->query($sql);
-        }
         for ($i = 0; $i < count($_POST['display']); $i++) {
             $sql = "update article set display = 1 where id = '{$_POST['display'][$i]}'";
             $result = $conn->query($sql);
