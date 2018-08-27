@@ -71,7 +71,7 @@ $result = $conn->query($sql);
     </td>
     <td><input type="checkbox" name="display[]" value="<?=$row['id']?>" <?=($row['display'] == 1 ? 'checked' : '')?>></td> <!-- checked -->
     <td><input type="checkbox" name="del[]" value="<?=$row['id']?>"></td>
-    <td><input type="button" value="編輯次選單" onclick="document.location.href='admin.php?do=admin&redo=menu2&id=<?=$row["id"]?>'"></td> <!-- js href -->
+    <td><input type="button" value="編輯次選單" onclick="document.location.href='admin.php?do=admin&redo=menu2&id=<?=$row['id']?>'"></td> <!-- js href -->
   </tr>
   <?php }?>
   </tbody>

@@ -1,6 +1,5 @@
 <?php
-  session_start();
-  unset($_SESSION['admin']);
+  include_once '_config.php';
+  unset($_SESSION['acc']);
   header('location:login.php');
-  exit();
 ?>
