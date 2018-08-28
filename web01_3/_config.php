@@ -18,8 +18,7 @@
   $result = $conn->query("select * from menus where parent = 0 and display = 1");
 	while($row = $result->fetch(PDO::FETCH_ASSOC))
 	{
-		$menu .= "<div class='mainmu' align='center'>
-			<a href='".$row["href"]."'>".$row["menu"]."</a>";
+		$menu .= "<div class='mainmu' align='center'><a href='".$row["href"]."'>".$row["menu"]."</a>";
 		
 		// 再取次選單
     $result2 = $conn->query("select * from menus where parent = '{$row["id"]}' and display = 1");
@@ -69,7 +68,7 @@
   while($row=$result->fetch(PDO::FETCH_ASSOC)){
     //$images[]=$row;
 		$gallery .= "
-		<img src='upload/".$row["image"]."'  width='150' height='103'  style='border:5px #FC3 solid;' class='im' id='ssaa".$num."' />
+		<div align='center'><img src='upload/".$row["image"]."'  width='150' height='103'  style='border:5px #FC3 solid;' class='im' id='ssaa".$num."' /></div>
 		";
 		
 		$num++;

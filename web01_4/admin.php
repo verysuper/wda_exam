@@ -23,7 +23,7 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-    	<a title="" href="index.html"><div class="ti" style="background:url('imgs/<?=$title?>'); background-size:cover;"></div><!--標題--></a>
+    	<a title="" href="index.php"><div class="ti" style="background:url('imgs/<?=$title?>'); background-size:cover;"></div><!--標題--></a>
         	<div id="ms">
              	<div id="lf" style="float:left;">
 <div id="menuput" class="dbor">
@@ -40,8 +40,7 @@
 <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=a9_1"><div class="mainmu">選單管理</div></a>
 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 : 
-                        	1                        </span>
+                    	<span class="t">進站總人數 : <?=$total?></span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -81,7 +80,7 @@
                              </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"></span>
+                	<span class="t" style="line-height:123px;"><?=$bottom?></span>
                 </div>
     </div>
 

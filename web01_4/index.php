@@ -20,25 +20,25 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-    	<a title="" href="index.html"><div class="ti" style="background:url('imgs/<?=$title?>'); background-size:cover;"></div><!--標題--></a>
+    	<a title="" href="index.php"><div class="ti" style="background:url('imgs/<?=$title?>'); background-size:cover;"></div><!--標題--></a>
         	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
-                    	                            <span class="t botli">主選單區</span>
+																									<span class="t botli">主選單區</span>
+																									<?=$menu?>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 : 
-                        	1                        </span>
+                    	<span class="t">進站總人數 : <?=$total?></span>
                     </div>
         		</div>
                 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
                 	                     <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
-                    	                    </marquee>
+                    	                    <?=$ad?></marquee>
                     <div style="height:32px; display:block;"></div>
                                         <!--正中央-->
                                         <script>
-                    	var lin=new Array();
+                    	var lin=new Array(<?=$mvim?>);
 						var now=0;
 						if(lin.length>1)
 						{
@@ -56,13 +56,19 @@
                     </script>
                 	<div style="width:100%; padding:2px; height:290px;">
                     	<div id="mwww" loop="true" style="width:100%; height:100%;">
-                        	                                <div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
-                                                        </div>
+												<div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
+											</div>
                     </div>
                 	<div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
-                    		<span class="t botli">最新消息區
+                    		<span class="t botli">最新消息區 
+												<?php
+													if($end>5){
+														?><span style='float:right;'> <a href="news.php">more...</a> </span><?php
+													}
+												?>
                             								</span>
-                            <ul class="ssaa" style="list-style-type:decimal;">
+														<ul class="ssaa" style="list-style-type:decimal;">
+														<?=$news?>
                             	                            </ul>
         			<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
@@ -100,17 +106,22 @@
                         </script>
                                  <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 	<!--右邊-->   
-                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=admin&#39;)">管理登入</button>
-                	<div style="width:89%; height:480px;" class="dbor">
-                    	<span class="t botli">校園映象區</span>
+                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('<?=$login_url?>')"><?=$login_text?></button>
+                	<div style="width:89%; height:480px;" class="dbor" align="center">
+											<span class="t botli">校園映象區</span>
+											<div style="width:150px;">
+												<img src="assets/01E01.jpg" alt="" onclick="pp(1)">
+												<?=$image?>
+												<img src="assets/01E02.jpg" alt="" onclick="pp(2)">
+											</div>
 						                        <script>
-                        	var nowpage=0,num=0;
+                        	var nowpage=0,num=<?=$end?>;
 							function pp(x)
 							{
 								var s,t;
 								if(x==1&&nowpage-1>=0)
 								{nowpage--;}
-								if(x==2&&(nowpage+1)*3<=num*1+3)
+								if(x==2&&(nowpage+3)<num)
 								{nowpage++;}
 								$(".im").hide()
 								for(s=0;s<=2;s++)
@@ -126,8 +137,8 @@
                             </div>
              	<div style="clear:both;"></div>
             	<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-                	<span class="t" style="line-height:123px;"></span>
+                	<span class="t" style="line-height:123px;"><?=$bottom?></span>
                 </div>
     </div>
-
+<script>ww()</script>
 </body></html>
