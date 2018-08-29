@@ -31,21 +31,43 @@
     </tr>
   <?php
     $sql="SELECT * FROM `news` ";
-    $result=$conn->query($sql);
-    while($row=$result->fetch(PDO::FETCH_ASSOC)){
+    $newsArr=$conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    $p=1;
+    if(isset($_GET['p'])){
+      $p=$_GET['p'];
+    }
+    $start=($p-1)*5;
+    $end=count($newsArr);
+    for($i=$start;$i<$start+5;$i++){
+      if($i<$end){
       ?>
         <tr class="yel">
           <td width="89%">            
-            <textarea name="name[]" id="textarea" cols="45" rows="5"><?=$row['name']?></textarea>
-            <input type="hidden" name="id[]" value="<?=$row['id']?>">
+            <textarea name="name[]" id="textarea" cols="45" rows="5"><?=$newsArr[$i]['name']?></textarea>
+            <input type="hidden" name="id[]" value="<?=$newsArr[$i]['id']?>">
           </td>
-          <td width="5%"><input type="checkbox" name="display[]" value="<?=$row['id']?>" <?=$row['display']==1?'checked':'';?>/></td>
-          <td width="6%"><input type="checkbox" name="del[]" value="<?=$row['id']?>" /></td>
-        </tr>
+          <td width="5%"><input type="checkbox" name="display[]" value="<?=$newsArr[$i]['id']?>" <?=$newsArr[$i]['display']==1?'checked':'';?>/></td>
+          <td width="6%"><input type="checkbox" name="del[]" value="<?=$newsArr[$i]['id']?>" /></td>
+        </tr>  
       <?php
+      }
     }
-  ?>
+      ?>
 </tbody></table>
+<?php
+  $totalp=ceil($end/5);
+  $last=$p-1;
+  $next=$p+1;
+  ?><a href="?redo=a7_1&p=<?=$last>0?$last:1;?>" style="font-size:30px;"><</a><?php
+  for($i=1;$i<=$totalp;$i++){
+    if($i==$p){
+      ?><a href="?redo=a7_1&p=<?=$i?>" style="font-size:30px;"><?=$i?></a><?php
+    }else{
+      ?><a href="?redo=a7_1&p=<?=$i?>" style="font-size:20px;"><?=$i?></a><?php
+    }    
+  }
+  ?><a href="?redo=a7_1&p=<?=$next<=$totalp?$next:$totalp;?>" style="font-size:30px;">></a><?php
+?>
 <table style="margin-top:40px; width:70%;">
 <tbody>
 <tr>
