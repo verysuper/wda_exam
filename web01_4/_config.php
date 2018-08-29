@@ -9,11 +9,11 @@ while($row=$result->fetch(PDO::FETCH_ASSOC)){
   $title=$row['name'];
 }
 
-$name="";
-$sql="SELECT * FROM `menu` where parent='0' and display=1";
-$result=$conn->query($sql);
-while($row=$result->fetch(PDO::FETCH_ASSOC)){
+// $menu="";
+// $sql="SELECT * FROM `menu` where parent='0' and display=1";
+// $result=$conn->query($sql);
+// while($row=$result->fetch(PDO::FETCH_ASSOC)){
   
-}
+// }
 
 ?>
